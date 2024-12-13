@@ -3,6 +3,49 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Solution Items", "1. Solution Items", "{D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitattributes = .gitattributes
+		.gitignore = .gitignore
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{761106B2-AE09-4A01-8AF7-07FD4A473B3E}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkFlows", "WorkFlows", "{BBE14537-027E-4473-B05D-365614A86004}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\code-metrics.yml = .github\workflows\code-metrics.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\dotnetdev.yml = .github\workflows\dotnetdev.yml
+		.github\workflows\formatting.yml = .github\workflows\formatting.yml
+		.github\workflows\jekyll-gh-pages.yml = .github\workflows\jekyll-gh-pages.yml
+		.github\workflows\todos-to-issues.yml = .github\workflows\todos-to-issues.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{D6BB2FD3-6BD6-41AA-B29E-AB360EB5915A}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\config.yml = .github\ISSUE_TEMPLATE\config.yml
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F4D37F59-C129-4436-BA00-38ED13DA9E7F}"
+	ProjectSection(SolutionItems) = preProject
+		docs\CODE_OF_CONDUCT.md = docs\CODE_OF_CONDUCT.md
+		docs\CONTRIBUTING.md = docs\CONTRIBUTING.md
+		docs\README.md = docs\README.md
+		docs\REFERENCES.md = docs\REFERENCES.md
+		docs\SECURITY.md = docs\SECURITY.md
+		docs\_config.yml = docs\_config.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +53,11 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{761106B2-AE09-4A01-8AF7-07FD4A473B3E} = {D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}
+		{BBE14537-027E-4473-B05D-365614A86004} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
+		{D6BB2FD3-6BD6-41AA-B29E-AB360EB5915A} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
+		{F4D37F59-C129-4436-BA00-38ED13DA9E7F} = {D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}
 	EndGlobalSection
 EndGlobal
