@@ -36,6 +36,16 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEM
 		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
 	EndProjectSection
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{F4D37F59-C129-4436-BA00-38ED13DA9E7F}"
+	ProjectSection(SolutionItems) = preProject
+		docs\CODE_OF_CONDUCT.md = docs\CODE_OF_CONDUCT.md
+		docs\CONTRIBUTING.md = docs\CONTRIBUTING.md
+		docs\README.md = docs\README.md
+		docs\REFERENCES.md = docs\REFERENCES.md
+		docs\SECURITY.md = docs\SECURITY.md
+		docs\_config.yml = docs\_config.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -48,5 +58,6 @@ Global
 		{761106B2-AE09-4A01-8AF7-07FD4A473B3E} = {D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}
 		{BBE14537-027E-4473-B05D-365614A86004} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
 		{D6BB2FD3-6BD6-41AA-B29E-AB360EB5915A} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
+		{F4D37F59-C129-4436-BA00-38ED13DA9E7F} = {D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}
 	EndGlobalSection
 EndGlobal
