@@ -23,7 +23,7 @@ this code. Please report unwanted behavior to [Matthew Paulosky](mailto:matthew.
 
 ## What should I know before I get started
 
-This project is a practice project to build a Blazor application supported by API, library and sql projects.
+This project is a practice project to build a BlazorServer application library and MongoDb projects.
 
 ### Project Folder Structure
 
@@ -48,7 +48,7 @@ those tools as well. The folders are configured as follows:
 ```
 
 All official versions of the project are built and delivered with GitHub Actions and linked in the main README.md
-and [releases tab in GitHub](https://github.com/mpaulosky/MyAspireBlogApp1/releases).
+and [releases tab in GitHub](https://github.com/mpaulosky/AspireBlog/releases).
 
 ### Design Decisions
 
@@ -72,7 +72,7 @@ This means one of several types of contributions:
 
 ### Create an Issue
 
-Create a [New Issue Here](https://github.com/mpaulosky/MyAspireBlogApp1/issues).
+Create a [New Issue Here](https://github.com/mpaulosky/AspireBlog/issues).
 
 1. If you are reporting a `Bug` that you have found. Be sure to add the `Bug` label so that we can triage and track it.
 1. If you are reporting an `Enhancement` that you think would improve the project. Be sure to add the `Enhancement`
@@ -80,7 +80,7 @@ Create a [New Issue Here](https://github.com/mpaulosky/MyAspireBlogApp1/issues).
 
 ### Respond to an Issue
 
-[Fork the Repository to your GitHub account](https://github.com/mpaulosky/MyAspireBlogApp1/fork).
+[Fork the Repository to your GitHub account](https://github.com/mpaulosky/AspireBlog/fork).
 
 1. Create a new Branch from the develop branch with a reference to the existing Issue number.
 1. Work on the issue.
@@ -98,10 +98,10 @@ tests to prove their functionality.
 All code should have an assigned issue that matches it. This way we can prevent contributors from working on the same
 feature at the same time.
 
-Code for components' features should also include some definition in the `/documents` folder so that our users can
+Code for components' features should also include some definition in the `/docs` folder so that our users can
 identify and understand which feature is supported.
 
 ### Write documentation
 
-The documentation for the project is always needed. We are always looking for help to add content to the `/documents`
+The documentation for the project is always needed. We are always looking for help to add content to the `/docs`
 section of the repository with proper links back through to the main `/README.md`.
