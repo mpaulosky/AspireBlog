@@ -34,8 +34,8 @@ jobs:
       DOTNET_ADD_GLOBAL_TOOLS_TO_PATH: false
       DOTNET_MULTILEVEL_LOOKUP: 0
       BUILD_CONFIG: 'Release --no-restore'
-      SOLUTION: 'AspireBlogApp.sln'
-      REPORT_NAME: 'AspireBlogApp-Test-Results'
+      SOLUTION: 'AspireBlog.sln'
+      REPORT_NAME: 'AspireBlog-Test-Results'
     
     steps:
       - uses: actions/checkout@v4
