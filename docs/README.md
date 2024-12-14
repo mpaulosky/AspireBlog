@@ -18,15 +18,15 @@
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mpaulosky/AspireBlog/dev?label=last%20commit%20dev&logo=github)
 ****
 ![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/mpaulosky/AspireBlog/dotnet.yml?branch=main&label=Build%20%26%20Test%20main&logo=github)
-[![Build and Test dev](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnetdev.yml/badge.svg?branch=dev)](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnetdev.yml)[![Test Results](https://github.com/mpaulosky/AspireBlog/actions/workflows/create-test-report.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/create-test-report.yml)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/mpaulosky/AspireBlog/dotnet.yml?branch=dev&label=Build%20%26%20Test%20dev&logo=github)
+[![Deploy GitHub Pages](https://github.com/mpaulosky/AspireBlog/actions/workflows/deploy-jekyll-gh-pages.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/deploy-jekyll-gh-pages.yml)
 ****
-[![codecov](https://codecov.io/gh/mpaulosky/AspireBlog/branch/main/graph/badge.svg)](https://codecov.io/gh/mpaulosky/AspireBlog)
-[![CodeQL main](https://github.com/mpaulosky/AspireBlog/actions/workflows/codeql-analysis.yml/badge.svg?branch=main)](https://github.com/mpaulosky/AspireBlog/actions/workflows/codeql-analysis.yml?branch=main)
+[![CodeCov Main](https://codecov.io/gh/mpaulosky/AspireBlog/branch/main/graph/badge.svg)](https://codecov.io/gh/mpaulosky/AspireBlog)
+[![CodeCov Dev](https://codecov.io/gh/mpaulosky/AspireBlog/branch/dev/graph/badge.svg)](https://codecov.io/gh/mpaulosky/AspireBlog)
 ****
 ![GitHub forks](https://img.shields.io/github/forks/mpaulosky/AspireBlog?label=Fork&logo=github)
 ![GitHub Repo stars](https://img.shields.io/github/stars/mpaulosky/AspireBlog?label=Stars&logo=github)
 ****
-[![Deploy Jekyll with GitHub Pages dependencies preinstalled](https://github.com/mpaulosky/AspireBlog/actions/workflows/jekyll-gh-pages.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/jekyll-gh-pages.yml)
 ## How to Engage, Contribute, and Give Feedback
 
 Review the [Code Of Conduct](CODE_OF_CONDUCT.md).
