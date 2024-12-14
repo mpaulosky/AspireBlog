@@ -10,6 +10,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Solution Items", "1. Sol
 		.gitignore = .gitignore
 		LICENSE.txt = LICENSE.txt
 		README.md = README.md
+		codecov.yml = codecov.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{761106B2-AE09-4A01-8AF7-07FD4A473B3E}"
@@ -21,7 +22,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkFlows", "WorkFlows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\code-metrics.yml = .github\workflows\code-metrics.yml
 		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
-		.github\workflows\codeql.yml = .github\workflows\codeql.yml
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\dotnetdev.yml = .github\workflows\dotnetdev.yml
 		.github\workflows\formatting.yml = .github\workflows\formatting.yml

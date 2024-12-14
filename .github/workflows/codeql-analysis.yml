@@ -16,8 +16,7 @@ name: "CodeQL"
 on:
   push:
     branches:
-      - main
-      - develop
+      - dev
     paths:
       - '**.cs'
       - '**.csproj'
@@ -26,7 +25,6 @@ on:
     # The branches below must be a subset of the branches above
     branches:
       - main
-      - develop
     paths:
       - '**.cs'
       - '**.csproj'
@@ -58,6 +56,17 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup .NET Core SDK
+        uses: actions/setup-dotnet@v4
+        with:
+          global-json-file: ./Global.json
+
+      - name: Workload install
+        run: dotnet workload restore
+
+      - name: Restores
+        run: dotnet restore
       
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL
@@ -66,7 +75,7 @@ jobs:
           languages: ${{ matrix.language }}
 
       - name: Autobuild
-        uses: github/codeql-action/autobuild@v3
+        run: dotnet build --configuration release
 
       - name: Perform CodeQL Analysis
-        uses: github/codeql-action/analyze@v3
+        uszes: github/codeql-action/analyze@v3
