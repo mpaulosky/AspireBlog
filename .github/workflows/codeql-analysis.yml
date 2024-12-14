@@ -16,6 +16,7 @@ name: "CodeQL"
 on:
   push:
     branches:
+      - main
       - dev
     paths:
       - '**.cs'
@@ -25,6 +26,7 @@ on:
     # The branches below must be a subset of the branches above
     branches:
       - main
+      - dev
     paths:
       - '**.cs'
       - '**.csproj'
@@ -78,4 +80,4 @@ jobs:
         run: dotnet build --configuration release
 
       - name: Perform CodeQL Analysis
-        uszes: github/codeql-action/analyze@v3
+        uses: github/codeql-action/analyze@v3
