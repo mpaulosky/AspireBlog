@@ -76,7 +76,7 @@ jobs:
       - run: |
           echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
 
-      - name: Codecov
+      - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v5.1.1
 
       - name: Upload dotnet test results
