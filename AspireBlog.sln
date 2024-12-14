@@ -25,7 +25,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkFlows", "WorkFlows", "{
 		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
 		.github\workflows\dotnetdev.yml = .github\workflows\dotnetdev.yml
 		.github\workflows\formatting.yml = .github\workflows\formatting.yml
-		.github\workflows\jekyll-gh-pages.yml = .github\workflows\jekyll-gh-pages.yml
 		.github\workflows\todos-to-issues.yml = .github\workflows\todos-to-issues.yml
 	EndProjectSection
 EndProject
