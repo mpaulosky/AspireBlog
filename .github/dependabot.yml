@@ -26,7 +26,7 @@ updates:
 
   # Maintain dependencies for nuget
   - package-ecosystem: "nuget"
-    directory: "/nuget/helpers/lib/NuGetUpdater"
+    directory: "/nuget/helpers/lib/NuGetPackageUpdater"
     schedule:
       interval: "weekly"
       day: "sunday"
@@ -43,7 +43,7 @@ updates:
 
   #Maintain DotNet Sdk
   - package-ecosystem: "dotnet-sdk"
-    directory: "/nuget/helpers/lib/NuGetUpdater"
+    directory: "/nuget/helpers/lib/NuGetPackageUpdater"
     schedule:
       interval: "weekly"
       day: "sunday"

@@ -1,13 +1,9 @@
 name: Create GitHub Issues from TODOs, FIXMEs, etc.
 
 on:
-  push:
-    branches:
-      - dev
-
   pull_request:
     branches:
-      - dev
+      - main
 
     paths-ignore:
       - "**/*.md"
@@ -15,7 +11,7 @@ on:
       - "**/*.gitattributes"
 
   workflow_run:
-    workflows: ["Build and Test .NET projects"]
+    workflows: ["Build and Test main"]
     branches: [main]
     types:
       - completed

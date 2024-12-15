@@ -30,7 +30,7 @@ public static class ServicesExtensions
 		#endregion Add RazorComponents and InteractiveServerComponents
 
 		#region Add Logging
-
+		
 		builder.Services.AddLogging(logging =>
 		{
 			logging.AddConsole();
@@ -52,8 +52,11 @@ public static class ServicesExtensions
 
 	public static void AddAuthenticationService(this WebApplicationBuilder builder)
 	{
-		Guard.Against.Null(builder, nameof(builder));
 
+		Guard.Against.Null(builder, nameof(builder));
+		
+		// TODO: Add authentication fix errors
+		
 		#region Add service defaults.
 
 		builder.AddServiceDefaults();
