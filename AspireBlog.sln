@@ -69,6 +69,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common.UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Mongo.UnitTests", "tests\AspireBlog.Mongo.UnitTests\AspireBlog.Mongo.UnitTests.csproj", "{07E239FB-A723-44FC-BA1D-317766D12829}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.TUnit.Tests", "tests\AspireBlog.TUnit.Tests\AspireBlog.TUnit.Tests.csproj", "{98702862-92E3-40E2-B23C-EA0BF0300543}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -103,6 +105,10 @@ Global
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98702862-92E3-40E2-B23C-EA0BF0300543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98702862-92E3-40E2-B23C-EA0BF0300543}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98702862-92E3-40E2-B23C-EA0BF0300543}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98702862-92E3-40E2-B23C-EA0BF0300543}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -119,5 +125,6 @@ Global
 		{8297E1A3-1D4C-4A65-A907-0DBCFF9F4327} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{4D4326BE-D6EF-4B50-AA64-63B8C07BCC4B} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
 		{07E239FB-A723-44FC-BA1D-317766D12829} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
+		{98702862-92E3-40E2-B23C-EA0BF0300543} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
 	EndGlobalSection
 EndGlobal
