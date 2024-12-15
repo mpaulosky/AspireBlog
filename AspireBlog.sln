@@ -69,7 +69,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common.UnitTests
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Mongo.UnitTests", "tests\AspireBlog.Mongo.UnitTests\AspireBlog.Mongo.UnitTests.csproj", "{07E239FB-A723-44FC-BA1D-317766D12829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.TUnit.Tests", "tests\AspireBlog.TUnit.Tests\AspireBlog.TUnit.Tests.csproj", "{98702862-92E3-40E2-B23C-EA0BF0300543}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common.TUnitTests", "tests\AspireBlog.Common.TUnitTests\AspireBlog.Common.TUnitTests.csproj", "{98702862-92E3-40E2-B23C-EA0BF0300543}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
