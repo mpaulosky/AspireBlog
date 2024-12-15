@@ -65,26 +65,6 @@ jobs:
       - name: Test
         run: dotnet test --configuration $BUILD_CONFIG --no-build --settings runsettings.xml
 
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v3.1.1
-        with:
-          versionSpec: "5.x"
-
-      - name: Use GitVersion
-        id: gitversion # step id used as reference for output values
-        uses: gittools/actions/gitversion/execute@v3.1.1
-      - run: |
-          echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"
-
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v5.1.1
-
-      - name: Upload dotnet test results
-        uses: actions/upload-artifact@v4
-        with:
-          name: ${{ env.REPORT_NAME }}
-          path: TestResults
-
         # Use always() to always run this step to
         # publish test results when there are test failures
         if: ${{ always() }}
