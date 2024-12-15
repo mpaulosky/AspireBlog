@@ -7,12 +7,7 @@
 // Project Name :  AspireBlog.Common
 // =============================================
 
-using Ardalis.GuardClauses;
-
-using AspireBlog.Mongo.Context;
 using AspireBlog.Mongo.Repositories;
-
-using Microsoft.EntityFrameworkCore;
 
 namespace AspireBlog.Mongo.Implementation;
 

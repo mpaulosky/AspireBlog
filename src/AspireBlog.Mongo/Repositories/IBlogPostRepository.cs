@@ -7,8 +7,6 @@
 // Project Name :  BlazingBlog
 // =============================================
 
-using AspireBlog.Common.Entities;
-
 namespace AspireBlog.Mongo.Repositories;
 
 public interface IBlogPostRepository : IGenericRepository<BlogPost>;

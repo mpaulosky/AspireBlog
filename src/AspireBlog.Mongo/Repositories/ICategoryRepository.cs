@@ -7,8 +7,6 @@
 // Project Name :  AspireBlog.Common
 // =============================================
 
-using AspireBlog.Common.Entities;
-
 namespace AspireBlog.Mongo.Repositories;
 
 public interface ICategoryRepository : IGenericRepository<Category>

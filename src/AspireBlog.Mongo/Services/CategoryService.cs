@@ -1,15 +1,4 @@
-﻿using Ardalis.GuardClauses;
-
-using AspireBlog.Common.Entities;
-using AspireBlog.Common.GuardClauses;
-using AspireBlog.Common.Interfaces;
-using AspireBlog.Common.Mappers;
-using AspireBlog.Common.Models;
-using AspireBlog.Mongo.Repositories;
-
-using Microsoft.Extensions.Logging;
-
-using MongoDB.Bson;
+﻿using AspireBlog.Mongo.Repositories;
 
 namespace AspireBlog.Mongo.Services;
 

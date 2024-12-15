@@ -7,11 +7,6 @@
 // Project Name :  AspireBlog.Common
 // =============================================
 
-using Ardalis.GuardClauses;
-
-using AspireBlog.Common.Entities;
-using AspireBlog.Common.Models;
-using AspireBlog.Mongo.Context;
 using AspireBlog.Mongo.Repositories;
 
 namespace AspireBlog.Mongo.Implementation;

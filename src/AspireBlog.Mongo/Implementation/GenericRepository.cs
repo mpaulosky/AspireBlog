@@ -7,16 +7,7 @@
 // Project Name :  AspireBlog.Common
 // =============================================
 
-using System.Linq.Expressions;
-
-using Ardalis.GuardClauses;
-
-using AspireBlog.Mongo.Context;
 using AspireBlog.Mongo.Repositories;
-
-using Microsoft.EntityFrameworkCore;
-
-using MongoDB.Bson;
 
 namespace AspireBlog.Mongo.Implementation;
 

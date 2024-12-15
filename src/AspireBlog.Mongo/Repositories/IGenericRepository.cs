@@ -7,10 +7,6 @@
 // Project Name :  AspireBlog.Common
 // =============================================
 
-using System.Linq.Expressions;
-
-using MongoDB.Bson;
-
 namespace AspireBlog.Mongo.Repositories;
 
 public interface IGenericRepository<T> where T : class

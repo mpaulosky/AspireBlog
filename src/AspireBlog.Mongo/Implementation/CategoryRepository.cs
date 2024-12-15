@@ -7,10 +7,6 @@
 // Project Name :  BlazingBlog
 // =============================================
 
-using Ardalis.GuardClauses;
-
-using AspireBlog.Common.Entities;
-using AspireBlog.Mongo.Context;
 using AspireBlog.Mongo.Repositories;
 
 namespace AspireBlog.Mongo.Implementation;

@@ -23,6 +23,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\AspireBlog.Common\AspireBlog.Common.csproj" />
+		<ProjectReference Include="..\AspireBlog.ServiceDefaults\AspireBlog.ServiceDefaults.csproj" />
 	</ItemGroup>
 
 </Project>
