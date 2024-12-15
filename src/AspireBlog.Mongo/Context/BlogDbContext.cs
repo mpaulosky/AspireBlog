@@ -1,12 +1,4 @@
-﻿using AspireBlog.Common.Entities;
-
-using MongoDB.Driver;
-
-using Microsoft.EntityFrameworkCore;
-
-using MongoDB.Bson;
-
-namespace AspireBlog.Mongo.Context;
+﻿namespace AspireBlog.Mongo.Context;
 
 public class BlogDbContext : DbContext
 {
