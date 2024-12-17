@@ -7,6 +7,7 @@ builder.AddServiceDefaults();
 #endregion Add service defaults.
 
 // TODO: Add authentication fix errors
+// Issue URL: https://github.com/mpaulosky/AspireBlog/issues/19
 
 builder.Services
 	.AddAuth0WebAppAuthentication(options =>
