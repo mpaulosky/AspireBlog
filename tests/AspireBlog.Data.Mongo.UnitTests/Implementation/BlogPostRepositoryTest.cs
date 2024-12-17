@@ -20,6 +20,7 @@ public class BlogPostRepositoryTest
 
 		//Arrange
 		// TODO: Implement BlogPostRepositoryTests
+		// Issue URL: https://github.com/mpaulosky/AspireBlog/issues/21
 
 
 		//Act

@@ -20,6 +20,7 @@ public class UserRepositoryTest
 
 		//Arrange
 		//TODO: Implement UserRepositoryTests
+		//Issue URL: https://github.com/mpaulosky/AspireBlog/issues/25
 
 		//Act
 

@@ -20,6 +20,7 @@ public class CategoryRepositoryTest
 
 		//Arrange
 		//TODO: Implement CategoryRepositoryTests
+		//Issue URL: https://github.com/mpaulosky/AspireBlog/issues/22
 
 		//Act
 

@@ -20,6 +20,7 @@ public class GenericRepositoryTest
 
 		//Arrange
 		//TODO: Implement GenericRepositoryTests
+		//Issue URL: https://github.com/mpaulosky/AspireBlog/issues/23
 
 		//Act
 
