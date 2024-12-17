@@ -43,8 +43,6 @@ public static class ServicesExtensions
 
 		Guard.Against.Null(builder, nameof(builder));
 		
-		// TODO: Add authentication fix errors
-		
 		#region Add service defaults.
 
 		builder.AddServiceDefaults();
