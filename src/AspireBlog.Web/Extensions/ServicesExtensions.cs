@@ -1,19 +1,7 @@
-﻿using Ardalis.GuardClauses;
-
-using AspireBlog.Common.Interfaces;
-
-using static AspireBlog.Common.Constants.ServiceNames;
-
-using AspireBlog.Mongo.Context;
-using AspireBlog.Mongo.Implementation;
-using AspireBlog.Mongo.Repositories;
-using AspireBlog.Mongo.Services;
-
-using Auth0.AspNetCore.Authentication;
-
-using Microsoft.EntityFrameworkCore;
-
-using MongoDB.Driver;
+﻿using AspireBlog.Abstractions.Interfaces;
+using AspireBlog.Data.Mongo.Implementation;
+using AspireBlog.Data.Mongo.Repositories;
+using AspireBlog.Data.Mongo.Services;
 
 namespace AspireBlog.Web.Extensions;
 
@@ -73,18 +61,21 @@ public static class ServicesExtensions
 			});
 	}
 
-	public static void RegisterBlogDbContext(this WebApplicationBuilder builder)
+	public static void RegisterBlogDbContextFactory(this WebApplicationBuilder builder)
 	{
-		Guard.Against.Null(builder, nameof(builder));
 
-		builder.AddMongoDBClient(MongoDbName);
+		Guard.Against.Null(builder, nameof(builder));
 
 		builder.Services.AddDbContextFactory<BlogDbContext>(options =>
 		{
+
 			var mongoDatabase =
 				Guard.Against.Null(builder.Services.BuildServiceProvider().GetRequiredService<IMongoDatabase>());
+			
 			options.UseMongoDB(mongoDatabase.Client, mongoDatabase.DatabaseNamespace.DatabaseName);
+
 		});
+
 	}
 
 	public static void RegisterRedisOutputCache(this WebApplicationBuilder builder)

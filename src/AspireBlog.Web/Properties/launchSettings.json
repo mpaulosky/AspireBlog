@@ -8,6 +8,17 @@
     }
   },
   "profiles": {
+    "https": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:17146;http://localhost:15038",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "DOTNET_ENVIRONMENT": "Development",
+        "DOTNET_RESOURCE_SERVICE_ENDPOINT_URL": "https://localhost:22146"
+      }
+    },
     "AspireBlog.Web": {
       "commandName": "Project",
       "dotnetRunMessages": true,
