@@ -1,13 +1,12 @@
 name: Code formatting
 on:
   push:
-    branches:
-      - main
     paths:
       - src/**.cs
       - src/**.js
       - src/**.css
       - tests/**.cs
+      - tests/**.js
 permissions:
   contents: write
 
@@ -17,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v3
         with:
           fetch-depth: 0
       - name: Get git diff
@@ -40,23 +39,26 @@ jobs:
       - name: Add formatting rules to .editorconfig
         if: steps.changed_cs.outputs.files != ''
         run: |
-          echo "" >> src/.editorconfig
-          echo "[*.cs]" >> src/.editorconfig
+          echo "" >> .editorconfig
+          echo "[*.cs]" >> .editorconfig
           echo "dotnet_diagnostic.IDE0005.severity = error" >> src/.editorconfig # Remove unnecessary using directives
           echo "dotnet_diagnostic.IDE0090.severity = error" >> src/.editorconfig # Simplify new expression
           echo "dotnet_diagnostic.IDE0003.severity = error" >> src/.editorconfig # this and Me preferences
           echo "dotnet_diagnostic.IDE0009.severity = error" >> src/.editorconfig # this and Me preferences
       - name: Setup .NET
         if: steps.changed_cs.outputs.files != ''
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: 8.0.x
+      - name: Workload install
+        if: steps.changed_cs.outputs.files != ''
+        run: dotnet workload restore AspireBlog.sln
       - name: Run dotnet format
         if: steps.changed_cs.outputs.files != ''
         id: dotnet-format
         run: |
           echo -e "\033[36mRunning dotnet format on:\033[0m ${{ steps.changed_cs.outputs.files }}"
-          result=$(dotnet format AspireBlogApp.sln --verbosity normal --exclude src/**/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
+          result=$(dotnet format AspireBlog.sln --verbosity normal --exclude src/**/Migrations/ --include ${{ steps.changed_cs.outputs.files }})
           echo -e "\033[36mdotnet-format result:\033[0m"
           echo "$result"
           count=$(echo "$result" | grep -c "Formatted code file" || true)
@@ -72,7 +74,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
       - name: Setup Node
         if: steps.changed_js_css.outputs.files != ''
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v3
         with:
           node-version: lts/*
       - name: Run prettier

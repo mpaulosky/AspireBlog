@@ -5,18 +5,18 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. Solution Items", "1. Solution Items", "{D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}"
 	ProjectSection(SolutionItems) = preProject
+		.dockerignore = .dockerignore
 		.editorconfig = .editorconfig
 		.gitattributes = .gitattributes
 		.gitignore = .gitignore
-		LICENSE.txt = LICENSE.txt
-		README.md = README.md
 		codecov.yml = codecov.yml
+		dependabot.yml = dependabot.yml
 		docker-compose.yml = docker-compose.yml
 		Global.json = Global.json
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
 		runsettings.xml = runsettings.xml
 		testEnvironments.json = testEnvironments.json
-		.dockerignore = .dockerignore
-		dependabot.yml = dependabot.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GitHub", "GitHub", "{761106B2-AE09-4A01-8AF7-07FD4A473B3E}"
@@ -55,21 +55,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. SRC", "2. SRC", "{41DF8F
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3.Tests", "3.Tests", "{4B582C21-6ADA-4193-8EF4-7E8914151749}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.AppHost", "src\AspireBlog.AppHost\AspireBlog.AppHost.csproj", "{76D382C4-8E70-4C5E-B5FE-A9F205694BC8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Abstractions", "src\AspireBlog.Abstractions\AspireBlog.Abstractions.csproj", "{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common", "src\AspireBlog.Common\AspireBlog.Common.csproj", "{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Mongo", "src\AspireBlog.Mongo\AspireBlog.Mongo.csproj", "{F9C8FEA7-390D-480C-83B4-D1CFE272CB4C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Data.Mongo", "src\AspireBlog.Data.Mongo\AspireBlog.Data.Mongo.csproj", "{F9C8FEA7-390D-480C-83B4-D1CFE272CB4C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.ServiceDefaults", "src\AspireBlog.ServiceDefaults\AspireBlog.ServiceDefaults.csproj", "{6ACDA1B6-A6B0-4267-BDF4-79CFC94F5F8A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Web", "src\AspireBlog.Web\AspireBlog.Web.csproj", "{8297E1A3-1D4C-4A65-A907-0DBCFF9F4327}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common.UnitTests", "tests\AspireBlog.Common.UnitTests\AspireBlog.Common.UnitTests.csproj", "{4D4326BE-D6EF-4B50-AA64-63B8C07BCC4B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Abstractions.UnitTests", "tests\AspireBlog.Abstractions.UnitTests\AspireBlog.Abstractions.UnitTests.csproj", "{4D4326BE-D6EF-4B50-AA64-63B8C07BCC4B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Mongo.UnitTests", "tests\AspireBlog.Mongo.UnitTests\AspireBlog.Mongo.UnitTests.csproj", "{07E239FB-A723-44FC-BA1D-317766D12829}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Data.Mongo.UnitTests", "tests\AspireBlog.Data.Mongo.UnitTests\AspireBlog.Data.Mongo.UnitTests.csproj", "{07E239FB-A723-44FC-BA1D-317766D12829}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Common.TUnitTests", "tests\AspireBlog.Common.TUnitTests\AspireBlog.Common.TUnitTests.csproj", "{98702862-92E3-40E2-B23C-EA0BF0300543}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.AppHost", "src\AspireBlog.AppHost\AspireBlog.AppHost.csproj", "{1B76A5D8-B779-4119-8377-E36D1E8D6FFE}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -77,10 +75,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{76D382C4-8E70-4C5E-B5FE-A9F205694BC8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{76D382C4-8E70-4C5E-B5FE-A9F205694BC8}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{76D382C4-8E70-4C5E-B5FE-A9F205694BC8}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{76D382C4-8E70-4C5E-B5FE-A9F205694BC8}.Release|Any CPU.Build.0 = Release|Any CPU
 		{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -105,10 +99,10 @@ Global
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{07E239FB-A723-44FC-BA1D-317766D12829}.Release|Any CPU.Build.0 = Release|Any CPU
-		{98702862-92E3-40E2-B23C-EA0BF0300543}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{98702862-92E3-40E2-B23C-EA0BF0300543}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{98702862-92E3-40E2-B23C-EA0BF0300543}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{98702862-92E3-40E2-B23C-EA0BF0300543}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1B76A5D8-B779-4119-8377-E36D1E8D6FFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1B76A5D8-B779-4119-8377-E36D1E8D6FFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1B76A5D8-B779-4119-8377-E36D1E8D6FFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1B76A5D8-B779-4119-8377-E36D1E8D6FFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -118,13 +112,12 @@ Global
 		{BBE14537-027E-4473-B05D-365614A86004} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
 		{D6BB2FD3-6BD6-41AA-B29E-AB360EB5915A} = {761106B2-AE09-4A01-8AF7-07FD4A473B3E}
 		{F4D37F59-C129-4436-BA00-38ED13DA9E7F} = {D0A37D9A-48A0-4AF5-B9E9-C1CE51F226C2}
-		{76D382C4-8E70-4C5E-B5FE-A9F205694BC8} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{E1D6648B-1667-4E09-8CB1-03ABA82EE8D5} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{F9C8FEA7-390D-480C-83B4-D1CFE272CB4C} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{6ACDA1B6-A6B0-4267-BDF4-79CFC94F5F8A} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{8297E1A3-1D4C-4A65-A907-0DBCFF9F4327} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 		{4D4326BE-D6EF-4B50-AA64-63B8C07BCC4B} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
 		{07E239FB-A723-44FC-BA1D-317766D12829} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
-		{98702862-92E3-40E2-B23C-EA0BF0300543} = {4B582C21-6ADA-4193-8EF4-7E8914151749}
+		{1B76A5D8-B779-4119-8377-E36D1E8D6FFE} = {41DF8FC7-CA8E-4293-A2A9-018F4AFB1996}
 	EndGlobalSection
 EndGlobal

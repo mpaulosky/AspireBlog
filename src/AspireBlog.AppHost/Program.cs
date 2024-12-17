@@ -1,3 +1,5 @@
+using AspireBlog.AppHost;
+
 using Projects;
 
 var builder = DistributedApplication.CreateBuilder(args);
@@ -10,9 +12,7 @@ IResourceBuilder<RedisResource> cache = builder.AddRedis(OutputCache);
 
 #region Add MongoDB Database
 
-var db = builder.AddMongoDB("db")
-	.WithMongoExpress()
-	.AddDatabase(MongoDbName);
+var db = builder.AddMongoDbService();
 
 #endregion
 
