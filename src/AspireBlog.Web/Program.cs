@@ -1,9 +1,4 @@
-using AspireBlog.Web.Extensions;
-
-using Auth0.AspNetCore.Authentication;
-
 WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
-
 
 #region Add service defaults.
 
@@ -11,7 +6,7 @@ builder.AddServiceDefaults();
 
 #endregion Add service defaults.
 
-builder.Services.AddCascadingAuthenticationState();
+// TODO: Add authentication fix errors
 
 builder.Services
 	.AddAuth0WebAppAuthentication(options =>
@@ -20,11 +15,13 @@ builder.Services
 		options.ClientId = builder.Configuration["Auth0:ClientId"] ?? "";
 	});
 
-// Add Authentication Service
-// builder.AddAuthenticationService();
+builder.Services.AddCascadingAuthenticationState();
 
 // Add BlogDbContextFactory
-builder.RegisterBlogDbContext();
+
+builder.AddMongoDBClient(MongoDbName);
+
+builder.RegisterBlogDbContextFactory();
 
 // Register Redis Output Cache
 builder.RegisterRedisOutputCache();
