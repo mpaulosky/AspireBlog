@@ -14,9 +14,11 @@
 		<PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
 		<PackageReference Include="Aspire.Hosting.MongoDB" Version="9.0.0" />
 		<PackageReference Include="Aspire.Hosting.Redis" Version="9.0.0" />
+		<PackageReference Include="MongoDB.Driver" Version="3.1.0" />
+		<PackageReference Include="MongoDB.Driver.Core" Version="2.30.0" />
 	</ItemGroup>
 
 	<ItemGroup>
 		<ProjectReference Include="..\AspireBlog.Abstractions\AspireBlog.Abstractions.csproj" IsAspireProjectResource="false" />
-		<ProjectReference Include="..\AspireBlog.Web\AspireBlog.Web.csproj"/>	</ItemGroup>
+		<ProjectReference Include="..\AspireBlog.Web\AspireBlog.Web.csproj" />	</ItemGroup>
 </Project>
