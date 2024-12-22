@@ -19,6 +19,8 @@ public static class ServiceNames
 
 	public const string MongoDbName = "posts-database";
 
+	public const string MongoDbConnection = "MongoDb";
+
 	public const string OutputCache = "output-cache";
 
 	public const string WebApp = "web-frontend";
