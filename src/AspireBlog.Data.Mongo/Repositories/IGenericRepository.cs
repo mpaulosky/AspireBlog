@@ -19,7 +19,12 @@ public interface IGenericRepository<T> where T : class
 
 	Task<IQueryable<T>> GetAllAsync(int count, int page);
 
+	Task<IEnumerable<T>> GetAllAsync();
+
 	Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+	
+	Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
+
 
 	void Create(T entity);
 
