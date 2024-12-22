@@ -1,1 +1,1 @@
-	global using static AspireBlog.Abstractions.Constants.ServiceNames;
+global using static AspireBlog.Abstractions.Constants.ServiceNames;
