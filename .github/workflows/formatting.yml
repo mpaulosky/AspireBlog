@@ -16,7 +16,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
       - name: Get git diff
@@ -47,7 +47,7 @@ jobs:
           echo "dotnet_diagnostic.IDE0009.severity = error" >> src/.editorconfig # this and Me preferences
       - name: Setup .NET
         if: steps.changed_cs.outputs.files != ''
-        uses: actions/setup-dotnet@v3
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.0.x
       - name: Workload install
@@ -74,7 +74,7 @@ jobs:
           } >> "$GITHUB_OUTPUT"
       - name: Setup Node
         if: steps.changed_js_css.outputs.files != ''
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: lts/*
       - name: Run prettier
