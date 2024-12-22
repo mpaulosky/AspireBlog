@@ -3,6 +3,7 @@
 /// <summary>
 ///   Represents a user in the Aspire Blog.
 /// </summary>
+[Collection("users")]
 public class User
 {
 	/// <summary>
