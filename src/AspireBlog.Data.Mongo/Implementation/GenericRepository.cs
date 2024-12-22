@@ -68,6 +68,28 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	///   Gets all entities.
 	/// </summary>
 	/// <returns>A task that represents the asynchronous operation. The task result contains a collection of all entities.</returns>
+	public async Task<IEnumerable<T>> GetAllAsync()
+	{
+		IQueryable<T> posts = _context.Set<T>().AsNoTracking();
+
+		if (posts.Any())
+		{
+			var result = posts
+				// ReSharper disable once EntityFramework.ClientSideDbFunctionCall
+				.OrderByDescending(p => EF.Property<DateTime>(p, "CreatedOn"))
+				.AsQueryable()
+				.ToList();
+
+			return await Task.FromResult(result);
+		}
+
+		return await Task.FromResult(Enumerable.Empty<T>().ToList());
+	}
+
+	/// <summary>
+	///   Gets all entities.
+	/// </summary>
+	/// <returns>A task that represents the asynchronous operation. The task result contains a collection of all entities.</returns>
 	public async Task<IQueryable<T>> GetAllAsync(int count, int page)
 	{
 		count = count < 1 ? 10 : count;
@@ -89,7 +111,6 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 		return await Task.FromResult(Enumerable.Empty<T>().AsQueryable());
 	}
-
 	/// <summary>
 	///   Finds entities that satisfy the specified predicate.
 	/// </summary>
@@ -102,6 +123,12 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	{
 		var result = _context.Set<T>().Where(predicate).AsNoTracking();
 		return Task.FromResult(result);
+	}
+
+	public async Task<T> FirstAsync(Expression<Func<T, bool>> predicate)
+	{
+		var result = Guard.Against.Null(await _context.Set<T>().Where(predicate).AsNoTracking().FirstAsync(), nameof(T));
+		return result;
 	}
 
 	/// <summary>
