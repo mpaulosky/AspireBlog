@@ -13,10 +13,10 @@ public class UnitOfWork : IUnitOfWork
 {
 	private readonly BlogDbContext _context;
 
-	public UnitOfWork(IDbContextFactory<BlogDbContext> contextFactory)
+	public UnitOfWork(IDbContextFactory<BlogDbContext> context)
 	{
-		//IDbContextFactory<BlogDbContext> contextFactory = Guard.Against.Null(contextFactory, nameof(contextFactory));
-		_context = Guard.Against.Null(contextFactory.CreateDbContext(), nameof(BlogDbContext));
+
+		_context = Guard.Against.Null(context.CreateDbContext(), nameof(BlogDbContext));
 
 		BlogPost = new BlogPostRepository(_context);
 		Category = new CategoryRepository(_context);
