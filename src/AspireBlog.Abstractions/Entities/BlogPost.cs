@@ -1,5 +1,6 @@
 ﻿namespace AspireBlog.Abstractions.Entities;
 
+[Collection("blog-posts")]
 public class BlogPost
 {
 	
