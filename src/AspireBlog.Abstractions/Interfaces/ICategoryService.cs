@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Interfaces;
+﻿// set
+
+namespace AspireBlog.Abstractions.Interfaces;
 
 public interface ICategoryService
 {

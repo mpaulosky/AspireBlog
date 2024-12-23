@@ -1,9 +1,16 @@
-﻿namespace AspireBlog.Abstractions.Entities;
+﻿// set
+
+#region
+
+using AspireBlog.Abstractions.Helpers;
+
+#endregion
+
+namespace AspireBlog.Abstractions.Entities;
 
 [Collection("blog-posts")]
 public class BlogPost
 {
-	
 	private string? _title;
 
 	[BsonId] [BsonElement("_id")] [Key] public ObjectId Id { get; set; } = ObjectId.Empty;
@@ -18,7 +25,7 @@ public class BlogPost
 			_title = value;
 			if (_title != null)
 			{
-				Slug = string.IsNullOrEmpty(Slug) ? Uri.EscapeDataString(_title.ToLowerInvariant()) : Slug;
+				Slug = string.IsNullOrEmpty(Slug) ? _title.GetSlug() : Slug;
 			}
 		}
 	}
@@ -36,11 +43,10 @@ public class BlogPost
 	public DateTime? PublishedOn { get; set; }
 
 	public DateTime? ModifiedOn { get; set; }
-	
-	[MaxLength(100)] public string? ImageUrl { get; init; }
+
+	[MaxLength(100)] public string? ImageUrl { get; set; }
 
 	public CategoryDto? Category { get; set; }
 
 	public UserDto? Author { get; set; }
-	
 }

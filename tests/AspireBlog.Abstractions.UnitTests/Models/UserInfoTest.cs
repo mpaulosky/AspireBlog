@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UserInfoTest.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Models;
 
@@ -13,16 +6,14 @@ namespace AspireBlog.Abstractions.Models;
 [TestSubject(typeof(UserInfo))]
 public class UserInfoTest
 {
-
 	[Fact]
 	public void UserInfo_Should_Have_Default_Values()
 	{
-		
 		// Arrange & Act
 		var userInfo = new UserInfo
 		{
-			Id = default,
-			Name = null,
+			UserId = string.Empty,
+			Name = string.Empty,
 			Email = null,
 			Roles =
 			[
@@ -30,32 +21,28 @@ public class UserInfoTest
 		};
 
 		// Assert
-		userInfo.Id.Should().Be(ObjectId.Empty);
-		userInfo.Name.Should().BeNull();
+		userInfo.UserId.Should().Be(string.Empty);
+		userInfo.Name.Should().Be(string.Empty);
 		userInfo.Email.Should().BeNull();
 		userInfo.Roles.Should().BeEmpty();
-		
 	}
 
 	[Fact]
 	public void UserInfo_Should_Set_Properties_Correctly()
 	{
-		
 		// Arrange
-		var id = new ObjectId("507f1f77bcf86cd799439011");
+		string id = new("507f1f77bcf86cd799439011");
 		const string name = "John Doe";
 		const string email = "john.doe@example.com";
-		var roles = new[] { "Admin", "User" };
+		string[] roles = new[] { "Admin", "User" };
 
 		// Act
-		var userInfo = new UserInfoDto { Id = id, Name = name, Email = email, Roles = roles };
+		var userInfo = new UserInfo { UserId = id, Name = name, Email = email, Roles = roles };
 
 		// Assert
-		userInfo.Id.Should().Be(id);
+		userInfo.UserId.Should().Be(id);
 		userInfo.Name.Should().Be(name);
 		userInfo.Email.Should().Be(email);
 		userInfo.Roles.Should().BeEquivalentTo(roles);
-		
 	}
-	
 }

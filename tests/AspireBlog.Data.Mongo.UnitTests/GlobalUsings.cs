@@ -1,11 +1,6 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     GlobalUsings.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Data.Mongo.UnitTests
-// =============================================
+// set
+
+#region
 
 global using System.Diagnostics.CodeAnalysis;
 
@@ -20,3 +15,5 @@ global using Microsoft.EntityFrameworkCore;
 global using MongoDB.Driver;
 
 global using Xunit;
+
+#endregion

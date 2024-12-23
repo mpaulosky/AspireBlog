@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeUser.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -22,7 +15,7 @@ public static class FakeUser
 	/// <returns>User</returns>
 	public static User GetNewUser(bool keepId = false, bool useSeed = false)
 	{
-		var user = FakeData(useSeed);
+		User? user = FakeData(useSeed);
 
 		if (!keepId)
 		{
@@ -42,7 +35,7 @@ public static class FakeUser
 	{
 		var userDtos = new List<User>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			userDtos.Add(FakeData(useSeed));
 		}
@@ -57,7 +50,7 @@ public static class FakeUser
 	/// <returns>A Faker User</returns>
 	public static User FakeData(bool useSeed = false)
 	{
-		var fakerData = new Faker<User>()
+		Faker<User>? fakerData = new Faker<User>()
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(x => x.FirstName, f => f.Name.FirstName())
@@ -65,15 +58,13 @@ public static class FakeUser
 			.RuleFor(x => x.FullName, (f, user) => $"{user.FirstName} {user.LastName}")
 			.RuleFor(x => x.Email, (f, u) => f.Internet.Email(u.FirstName, u.LastName))
 			.RuleFor(x => x.Roles, f => [f.Random.Enum<Roles>().ToString()]);
-		
+
 		if (useSeed)
 		{
 			const int seed = 621;
 			return fakerData.UseSeed(seed).Generate();
 		}
-		else
-		{
-			return fakerData.Generate();
-		}
+
+		return fakerData.Generate();
 	}
 }

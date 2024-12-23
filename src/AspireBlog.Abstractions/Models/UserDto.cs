@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Models;
+﻿// set
+
+namespace AspireBlog.Abstractions.Models;
 
 /// <summary>
 ///   Represents a userDto in the Aspire Blog.
@@ -50,7 +52,7 @@ public class UserDto
 	[BsonRepresentation(BsonType.String)]
 	[MaxLength(50)]
 	public string? FullName { get; init; }
-	
+
 	/// <summary>
 	///   Gets or sets the email of the user.
 	/// </summary>

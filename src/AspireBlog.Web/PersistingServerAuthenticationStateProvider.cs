@@ -1,6 +1,11 @@
-using System.Diagnostics;
+// set
 
-using AspireBlog.Web.Models;
+#region
+
+using System.Diagnostics;
+using System.Security.Claims;
+
+using AspireBlog.Abstractions.Models;
 
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Authorization;
@@ -9,28 +14,36 @@ using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
 
+#endregion
+
 namespace AspireBlog.Web;
 
 // This is a server-side AuthenticationStateProvider that uses PersistentComponentState to flow the
 // authentication state to the client which is then fixed for the lifetime of the WebAssembly application.
 internal sealed class PersistingServerAuthenticationStateProvider : ServerAuthenticationStateProvider, IDisposable
 {
+	private readonly IdentityOptions _options;
 	private readonly PersistentComponentState _state;
-	private readonly IdentityOptions options;
 
 	private readonly PersistingComponentStateSubscription _subscription;
 
 	private Task<AuthenticationState>? _authenticationStateTask;
 
 	public PersistingServerAuthenticationStateProvider(
-			PersistentComponentState persistentComponentState,
-			IOptions<IdentityOptions> optionsAccessor)
+		PersistentComponentState persistentComponentState,
+		IOptions<IdentityOptions> optionsAccessor)
 	{
 		_state = persistentComponentState;
-		options = optionsAccessor.Value;
+		_options = optionsAccessor.Value;
 
 		AuthenticationStateChanged += OnAuthenticationStateChanged;
 		_subscription = _state.RegisterOnPersisting(OnPersistingAsync, RenderMode.InteractiveAuto);
+	}
+
+	public void Dispose()
+	{
+		_subscription.Dispose();
+		AuthenticationStateChanged -= OnAuthenticationStateChanged;
 	}
 
 	private void OnAuthenticationStateChanged(Task<AuthenticationState> task)
@@ -45,29 +58,22 @@ internal sealed class PersistingServerAuthenticationStateProvider : ServerAuthen
 			throw new UnreachableException($"Authentication state not set in {nameof(OnPersistingAsync)}().");
 		}
 
-		var authenticationState = await _authenticationStateTask;
-		var principal = authenticationState.User;
+		AuthenticationState? authenticationState = await _authenticationStateTask;
+		ClaimsPrincipal? principal = authenticationState.User;
 
 		if (principal.Identity?.IsAuthenticated == true)
 		{
-			var userId = principal.FindFirst(options.ClaimsIdentity.UserIdClaimType)?.Value;
-			var email = principal.FindFirst("Name")?.Value;
-			var roles = principal.Claims.Where(c => c.Type == options.ClaimsIdentity.RoleClaimType).Select(c => c.Value).ToArray();
+			string? userId = principal.FindFirst(_options.ClaimsIdentity.UserIdClaimType)?.Value;
+			string? name = principal.FindFirst(_options.ClaimsIdentity.UserNameClaimType)?.Value;
+			string? email = principal.FindFirst(_options.ClaimsIdentity.EmailClaimType)?.Value;
+			string[]? roles = principal.Claims.Where(c => c.Type == _options.ClaimsIdentity.RoleClaimType)
+				.Select(c => c.Value).ToArray();
+
 			if (userId != null)
 			{
-				_state.PersistAsJson(nameof(UserInfo), new UserInfo
-				{
-					UserId = userId,
-					Email = email,
-					Roles = roles
-				});
+				_state.PersistAsJson(nameof(UserInfo),
+					new UserInfo { UserId = userId, Name = name!, Email = email, Roles = roles });
 			}
 		}
-	}
-
-	public void Dispose()
-	{
-		_subscription.Dispose();
-		AuthenticationStateChanged -= OnAuthenticationStateChanged;
 	}
 }

@@ -1,3 +1,5 @@
+// set
+
 namespace AspireBlog.Abstractions.Entities;
 
 [ExcludeFromCodeCoverage]
@@ -21,7 +23,7 @@ public class UserTests
 		var user = new User { FirstName = null };
 
 		// Act
-		var validationResults = ValidateModel(user);
+		IList<ValidationResult>? validationResults = ValidateModel(user);
 
 		// Assert
 		validationResults.Should().ContainSingle(vr => vr.MemberNames.Contains(nameof(User.FirstName)));
@@ -34,7 +36,7 @@ public class UserTests
 		var user = new User { Email = null };
 
 		// Act
-		var validationResults = ValidateModel(user);
+		IList<ValidationResult>? validationResults = ValidateModel(user);
 
 		// Assert
 		validationResults.Should().ContainSingle(vr => vr.MemberNames.Contains(nameof(User.Email)));
@@ -47,7 +49,7 @@ public class UserTests
 		var user = new User { Roles = null };
 
 		// Act
-		var validationResults = ValidateModel(user);
+		IList<ValidationResult>? validationResults = ValidateModel(user);
 
 		// Assert
 		validationResults.Should().ContainSingle(vr => vr.MemberNames.Contains(nameof(User.Roles)));

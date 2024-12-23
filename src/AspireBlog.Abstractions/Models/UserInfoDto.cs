@@ -1,27 +1,11 @@
-﻿namespace AspireBlog.Abstractions.Models;
+// set
 
-/// <summary>
-///   Represents a data transfer object for user information.
-/// </summary>
+namespace AspireBlog.Abstractions.Models;
+
 public class UserInfoDto
 {
-	/// <summary>
-	///   Gets or sets the unique identifier for the user.
-	/// </summary>
-	public required ObjectId Id { get; init; } = ObjectId.Empty;
-
-	/// <summary>
-	///   Gets or sets the name of the user.
-	/// </summary>
-	public required string? Name { get; init; }
-
-	/// <summary>
-	///   Gets or sets the email of the user.
-	/// </summary>
-	public required string? Email { get; init; }
-
-	/// <summary>
-	///   Gets or sets the roles assigned to the user.
-	/// </summary>
-	public string[]? Roles { get; init; }
+	public required string UserId { get; set; }
+	public required string Name { get; set; }
+	public required string? Email { get; set; }
+	public required string[] Roles { get; set; }
 }

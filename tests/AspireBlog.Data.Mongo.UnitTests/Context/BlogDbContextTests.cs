@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogDbContextTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Data.Mongo.UnitTests
-// =============================================
+// set
 
 //  namespace AspireBlog.Data.Mongo.Context;
 //
@@ -95,3 +88,4 @@
 // 		user.Roles.Should().Contain("Admin");
 // 	}
 // }
+

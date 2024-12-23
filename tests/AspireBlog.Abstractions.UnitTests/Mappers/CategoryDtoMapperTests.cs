@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     CategoryDtoMapperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -34,7 +27,7 @@ public class CategoryDtoMapperTests
 		};
 
 		// Act
-		var result = category.MapToCategoryDto();
+		CategoryDto? result = category.MapToCategoryDto();
 
 		// Assert
 		result.Id.Should().Be(category.Id);

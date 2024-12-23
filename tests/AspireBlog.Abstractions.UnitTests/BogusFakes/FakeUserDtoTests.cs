@@ -1,11 +1,4 @@
-﻿// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeUserDtoTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+﻿// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -13,38 +6,32 @@ namespace AspireBlog.Abstractions.BogusFakes;
 [TestSubject(typeof(FakeUserDto))]
 public class FakeUserDtoTests
 {
-	
 	[Fact(DisplayName = "GetNewUserDto Should Return User Without Id When KeepId Is False")]
 	public void GetNewUserDto_Should_Return_User_Without_Id_When_KeepId_Is_False()
 	{
-		
 		// Act
-		var user = FakeUserDto.GetNewUserDto(keepId: false);
+		UserDto? user = FakeUserDto.GetNewUserDto();
 
 		// Assert
 		user.Id.Should().Be(ObjectId.Empty);
-		
 	}
 
 	[Fact(DisplayName = "GetNewUserDto Should Return User With Id When KeepId Is True")]
 	public void GetNewUserDto_Should_Return_User_With_Id_When_KeepId_Is_True()
 	{
-		
 		// Act
-		var user = FakeUserDto.GetNewUserDto(keepId: true);
+		UserDto? user = FakeUserDto.GetNewUserDto(true);
 
 		// Assert
 		user.Id.Should().NotBe(ObjectId.Empty);
-		
 	}
 
 	[Fact(DisplayName = "GetNewUserDto Should Return different User When UseSeed Is False")]
 	public void GetNewUserDto_Should_Return_Different_User_When_UseSeed_Is_False()
 	{
-
 		// Act
-		var user1 = FakeUserDto.GetNewUserDto(useSeed: false);
-		var user2 = FakeUserDto.GetNewUserDto(useSeed: false);
+		UserDto? user1 = FakeUserDto.GetNewUserDto(useSeed: false);
+		UserDto? user2 = FakeUserDto.GetNewUserDto(useSeed: false);
 
 		// Assert
 
@@ -53,15 +40,14 @@ public class FakeUserDtoTests
 		user1.LastName.Should().NotBeEquivalentTo(user2.LastName);
 		user1.FullName.Should().NotBeEquivalentTo(user2.FullName);
 		user1.Email.Should().NotBeEquivalentTo(user2.Email);
-		
 	}
 
 	[Fact(DisplayName = "GetNewUserDto Should Return Same User When UseSeed Is True")]
 	public void GetNewUserDto_Should_Return_Same_User_When_UseSeed_Is_True()
 	{
 		// Act
-		var user1 = FakeUserDto.GetNewUserDto(useSeed: true);
-		var user2 = FakeUserDto.GetNewUserDto(useSeed: true);
+		UserDto? user1 = FakeUserDto.GetNewUserDto(useSeed: true);
+		UserDto? user2 = FakeUserDto.GetNewUserDto(useSeed: true);
 
 		// Assert
 		user1.Should().BeEquivalentTo(user2);
@@ -74,7 +60,7 @@ public class FakeUserDtoTests
 		const int numberRequested = 5;
 
 		// Act
-		var users = FakeUserDto.GetUserDtos(numberRequested, useSeed: false);
+		List<UserDto>? users = FakeUserDto.GetUserDtos(numberRequested);
 
 		// Assert
 		users.Should().HaveCount(numberRequested);
@@ -86,10 +72,10 @@ public class FakeUserDtoTests
 	public void GetUserDtos_Should_Return_Different_Users_When_UseSeed_Is_False(int countRequested, bool useSeed)
 	{
 		// Act
-		var users = FakeUserDto.GetUserDtos(countRequested, useSeed);
+		List<UserDto>? users = FakeUserDto.GetUserDtos(countRequested, useSeed);
 
 		// Assert
-		foreach (var user in users)
+		foreach (UserDto? user in users)
 		{
 			user.Id.Should().NotBe(ObjectId.Empty);
 			user.FirstName.Should().NotBeNull();
@@ -104,22 +90,18 @@ public class FakeUserDtoTests
 	[InlineData(5, true)]
 	public void GetUserDtos_Should_Return_Same_Users_When_UseSeed_Is_True(int countRequested, bool useSeed)
 	{
-		
 		// Act
-		var users1 = FakeUserDto.GetUserDtos(countRequested, useSeed);
-		var users2 = FakeUserDto.GetUserDtos(countRequested, useSeed);
+		List<UserDto>? users1 = FakeUserDto.GetUserDtos(countRequested, useSeed);
+		List<UserDto>? users2 = FakeUserDto.GetUserDtos(countRequested, useSeed);
 
 		// Assert
 		for (int i = 0; i < users1.Count; i++)
 		{
-			
 			users1[i].Id.Should().NotBeSameAs(users2[i].Id);
 			users1[i].FirstName.Should().BeEquivalentTo(users2[i].FirstName);
 			users1[i].LastName.Should().BeEquivalentTo(users2[i].LastName);
 			users1[i].FullName.Should().BeEquivalentTo(users2[i].FullName);
 			users1[i].Email.Should().BeEquivalentTo(users2[i].Email);
-			
 		}
-		
 	}
 }

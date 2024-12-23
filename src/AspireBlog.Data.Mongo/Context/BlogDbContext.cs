@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Data.Mongo.Context;
+﻿// set
+
+namespace AspireBlog.Data.Mongo.Context;
 
 public class BlogDbContext : DbContext
 {

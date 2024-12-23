@@ -1,21 +1,14 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UserDtoMapper.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBLog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
 /// <summary>
 ///   Provides methods to map User related entities to UserDto.
 /// </summary>
-public static class UserDtoMapper
+public static class UserMapper
 {
 	/// <summary>
-	///   Maps UserModel to UserDto
+	///   Maps User to UserDto
 	/// </summary>
 	/// <param name="user"></param>
 	/// <returns>UserDto</returns>
@@ -47,6 +40,19 @@ public static class UserDtoMapper
 			FullName = userDto.FullName,
 			Email = userDto.Email,
 			Roles = userDto.Roles
+		};
+	}
+
+	/// <summary>
+	///   Maps User to UserInfo
+	/// </summary>
+	/// <param name="user"></param>
+	/// <returns>UserInfo</returns>
+	public static UserInfo MapToUserInfo(this User user)
+	{
+		return new UserInfo
+		{
+			UserId = user.Id.ToString(), Name = user.FullName ?? string.Empty, Email = user.Email, Roles = user.Roles ?? []
 		};
 	}
 }

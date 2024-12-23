@@ -1,3 +1,5 @@
+// set
+
 namespace AspireBlog.Abstractions.Entities;
 
 [ExcludeFromCodeCoverage]
@@ -8,7 +10,7 @@ public class CategoryTests
 	public void Category_Should_Have_Default_Values()
 	{
 		// Arrange & Act
-		Category category = new Category();
+		var category = new Category();
 
 		// Assert
 		category.Id.Should().Be(ObjectId.Empty);
@@ -22,7 +24,7 @@ public class CategoryTests
 	public void CategoryName_Should_Set_Slug_When_Not_Already_Set()
 	{
 		// Arrange
-		Category category = new Category();
+		var category = new Category();
 		string categoryName = "Test Category";
 
 		// Act
@@ -36,7 +38,7 @@ public class CategoryTests
 	public void CategoryName_Should_Not_Change_Slug_When_Already_Set()
 	{
 		// Arrange
-		Category category = new Category { Slug = "existing-slug" };
+		var category = new Category { Slug = "existing-slug" };
 		string categoryName = "Test Category";
 
 		// Act
@@ -50,9 +52,11 @@ public class CategoryTests
 	public void Category_Should_Be_Archived()
 	{
 		// Arrange
-		Category category = new Category {
+		var category = new Category
+		{
 			// Act
-			IsArchived = true };
+			IsArchived = true
+		};
 
 		// Assert
 		category.IsArchived.Should().BeTrue();

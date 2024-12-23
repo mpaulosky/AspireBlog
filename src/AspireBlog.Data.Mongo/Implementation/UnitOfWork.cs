@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UnitOfWork.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Data.Mongo.Implementation;
 
@@ -15,7 +8,6 @@ public class UnitOfWork : IUnitOfWork
 
 	public UnitOfWork(IDbContextFactory<BlogDbContext> context)
 	{
-
 		_context = Guard.Against.Null(context.CreateDbContext(), nameof(BlogDbContext));
 
 		BlogPost = new BlogPostRepository(_context);

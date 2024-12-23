@@ -1,12 +1,3 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogPostDtoMapperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
-
 namespace AspireBlog.Abstractions.Mappers;
 
 [ExcludeFromCodeCoverage]
@@ -20,7 +11,7 @@ public class BlogPostDtoMapperTests
 		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
-		var result = blogPost.MapToBlogPostDto();
+		BlogPostDto result = blogPost.MapToBlogPostDto();
 
 		// Assert
 		result.Should().NotBeNull();
@@ -53,7 +44,7 @@ public class BlogPostDtoMapperTests
 	[Fact(DisplayName = "MapToBlogPostDto Should Throw Exception For Null Or Empty Title")]
 	public void MapToBlogPostDto_Should_Throw_Exception_For_Null_Title()
 	{
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost blogPost = FakeBlogPost.GetNewBlogPost(true);
 		blogPost.Title = string.Empty;
 
 		Action act = () => blogPost.MapToBlogPostDto();
@@ -64,7 +55,7 @@ public class BlogPostDtoMapperTests
 	[Fact(DisplayName = "MapToBlogPostDto Should Throw Exception For Null Or Empty Slug")]
 	public void MapToBlogPost_Should_Throw_Exception_For_Null_Slug()
 	{
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost blogPost = FakeBlogPost.GetNewBlogPost(true);
 		blogPost.Slug = string.Empty;
 
 		Action act = () => blogPost.MapToBlogPostDto();
@@ -75,7 +66,7 @@ public class BlogPostDtoMapperTests
 	[Fact(DisplayName = "Merge Should Throw Exception For Null Or Empty Content")]
 	public void Merge_Should_Throw_Exception_For_Null_Content()
 	{
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost blogPost = FakeBlogPost.GetNewBlogPost(true);
 		blogPost.Content = string.Empty;
 
 		Action act = () => blogPost.MapToBlogPostDto();
@@ -86,7 +77,7 @@ public class BlogPostDtoMapperTests
 	[Fact(DisplayName = "MapToBlogPostDto Should Throw Exception For Null Or Empty Introduction")]
 	public void MapToBlogPost_Should_Throw_Exception_For_Null_Introduction()
 	{
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost blogPost = FakeBlogPost.GetNewBlogPost(true);
 		blogPost.Introduction = string.Empty;
 
 		Action act = () => blogPost.MapToBlogPostDto();
@@ -97,7 +88,7 @@ public class BlogPostDtoMapperTests
 	[Fact(DisplayName = "MapToBlogPostDto Should Throw Exception For Null Or Empty CreatedOn")]
 	public void MapToBlogPost_Should_Throw_Exception_For_Null_CreatedOn()
 	{
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost blogPost = FakeBlogPost.GetNewBlogPost(true);
 		blogPost.CreatedOn = null;
 
 		Action act = () => blogPost.MapToBlogPostDto();

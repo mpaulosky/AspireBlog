@@ -1,3 +1,7 @@
+// set
+
+#region
+
 using AspireBlog.Web;
 using AspireBlog.Web.Components;
 using AspireBlog.Web.Extensions;
@@ -8,7 +12,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Components.Authorization;
 
-var builder = WebApplication.CreateBuilder(args);
+#endregion
+
+WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
 
 // Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
@@ -16,25 +22,26 @@ builder.AddRedisOutputCache("cache");
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
-		.AddInteractiveServerComponents();
+	.AddInteractiveServerComponents();
+
+builder.AddDbContextFactory();
 
 builder.Services.AddCascadingAuthenticationState();
 
 builder.Services
-		.AddAuth0WebAppAuthentication(options =>
-		{
-			options.Domain = builder.Configuration["Auth0:Authority"] ?? "";
-			options.ClientId = builder.Configuration["Auth0:ClientId"] ?? "";
-		});
+	.AddAuth0WebAppAuthentication(options =>
+	{
+		options.Domain = builder.Configuration["Auth0:Authority"] ?? "";
+		options.ClientId = builder.Configuration["Auth0:ClientId"] ?? "";
+	});
+
 builder.Services.AddScoped<AuthenticationStateProvider, PersistingServerAuthenticationStateProvider>();
 
-builder.AddDbContextFactory();
-
-var app = builder.Build();
+WebApplication? app = builder.Build();
 
 if (!app.Environment.IsDevelopment())
 {
-	app.UseExceptionHandler("/Error", createScopeForErrors: true);
+	app.UseExceptionHandler("/Error", true);
 	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
 	app.UseHsts();
 }
@@ -48,23 +55,23 @@ app.UseOutputCache();
 app.MapStaticAssets();
 
 app.MapRazorComponents<App>()
-		.AddInteractiveServerRenderMode();
+	.AddInteractiveServerRenderMode();
 
 app.MapDefaultEndpoints();
 
 app.MapGet("Account/Login", async (string returnUrl, HttpContext context) =>
 {
-	var authenticationProperties = new LoginAuthenticationPropertiesBuilder()
-			 .WithRedirectUri(returnUrl)
-			 .Build();
+	AuthenticationProperties? authenticationProperties = new LoginAuthenticationPropertiesBuilder()
+		.WithRedirectUri(returnUrl)
+		.Build();
 	await context.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
 });
 
-app.MapGet("authentication/logout", async (HttpContext context) =>
+app.MapGet("authentication/logout", async context =>
 {
-	var authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
-			 .WithRedirectUri("/")
-			 .Build();
+	AuthenticationProperties? authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
+		.WithRedirectUri("/")
+		.Build();
 	await context.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
 	await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
 });

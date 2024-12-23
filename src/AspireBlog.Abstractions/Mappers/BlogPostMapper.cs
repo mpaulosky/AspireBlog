@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogPostMapper.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBLog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -21,9 +14,8 @@ public static class BlogPostMapper
 	/// <returns>A BlogPost object.</returns>
 	public static BlogPost MapToBlogPost(this BlogPostDto blogPostDto)
 	{
-		
 		Guard.Against.Null(blogPostDto, nameof(blogPostDto));
-		
+
 		return new BlogPost
 		{
 			Id = Guard.Against.EmptyObjectId(blogPostDto.Id, nameof(blogPostDto.Id)),
@@ -38,15 +30,13 @@ public static class BlogPostMapper
 			Author = blogPostDto.Author,
 			Category = blogPostDto.Category
 		};
-		
 	}
 
 	public static BlogPost? Merge(this BlogPostDto? blogPostDto, BlogPost? entity)
 	{
-		
 		Guard.Against.Null(blogPostDto, nameof(blogPostDto));
 		Guard.Against.Null(entity, nameof(entity));
-		
+
 		entity.Id = Guard.Against.EmptyObjectId(blogPostDto.Id, nameof(blogPostDto.Id));
 		entity.Title = Guard.Against.NullOrWhiteSpace(blogPostDto.Title);
 		entity.Slug = Guard.Against.NullOrWhiteSpace(blogPostDto.Slug);
@@ -59,6 +49,5 @@ public static class BlogPostMapper
 		entity.Author = blogPostDto.Author;
 		entity.Category = blogPostDto.Category;
 		return entity;
-		
 	}
 }

@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Entities;
+﻿// set
+
+namespace AspireBlog.Abstractions.Entities;
 
 /// <summary>
 ///   Represents a category in the Aspire Blog.
@@ -29,7 +31,8 @@ public class Category
 	/// <remarks>
 	///   The category name is required and has a maximum length of 100 characters.
 	/// </remarks>
-	[Required, MaxLength(100)]
+	[Required]
+	[MaxLength(100)]
 	public string? CategoryName
 	{
 		get => _categoryName;

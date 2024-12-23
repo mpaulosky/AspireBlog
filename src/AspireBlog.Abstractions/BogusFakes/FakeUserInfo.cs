@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeUserInfo.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -15,18 +8,18 @@ namespace AspireBlog.Abstractions.BogusFakes;
 public static class FakeUserInfo
 {
 	/// <summary>
-	///   Gets a new user.
+	///   Gets a new UserInfo.
 	/// </summary>
 	/// <param name="keepId">bool whether to keep the generated Id</param>
 	/// <param name="useSeed">If true use seed to generate the same data each request</param>
-	/// <returns>UserModel</returns>
+	/// <returns>UserInfo</returns>
 	public static UserInfo GetNewUserInfo(bool keepId = false, bool useSeed = false)
 	{
-		var userInfo = FakeData(useSeed);
+		UserInfo userInfo = FakeData(useSeed);
 
 		if (!keepId)
 		{
-			userInfo.Id = ObjectId.Empty;
+			userInfo.UserId = string.Empty;
 		}
 
 		return userInfo;
@@ -42,7 +35,7 @@ public static class FakeUserInfo
 	{
 		var usersInfos = new List<UserInfo>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			usersInfos.Add(FakeData(useSeed));
 		}
@@ -57,8 +50,8 @@ public static class FakeUserInfo
 	/// <returns>A Faker UserModel</returns>
 	private static UserInfo FakeData(bool useSeed = false)
 	{
-		var fakerData = new Faker<UserInfo>()
-			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
+		Faker<UserInfo>? fakerData = new Faker<UserInfo>()
+			.RuleFor(x => x.UserId, ObjectId.GenerateNewId().ToString())
 			.RuleFor(x => x.Name, f => f.Name.FullName())
 			.RuleFor(x => x.Email, (f, u) => f.Internet.Email(u.Name))
 			.RuleFor(x => x.Roles, f => [f.Random.Enum<Roles>().ToString()]);

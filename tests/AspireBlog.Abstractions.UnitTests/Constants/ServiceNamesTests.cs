@@ -1,3 +1,5 @@
+// set
+
 namespace AspireBlog.Abstractions.Constants;
 
 [ExcludeFromCodeCoverage]
@@ -27,5 +29,4 @@ public class ServiceNamesTests
 	{
 		ServiceNames.WebApp.Should().Be("web-frontend");
 	}
-
 }

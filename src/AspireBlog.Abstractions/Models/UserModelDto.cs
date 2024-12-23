@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UserDto.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Models;
 

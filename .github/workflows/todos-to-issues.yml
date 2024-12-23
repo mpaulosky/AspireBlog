@@ -2,8 +2,8 @@ name: Create GitHub Issues from TODOs, FIXMEs, etc.
 
 on:
   workflow_run:
-    workflows: ["Build and Test .NET projects"]
-    branches: [main]
+    workflows: [ "Build and Test .NET projects" ]
+    branches: [ main ]
     types:
       - completed
 

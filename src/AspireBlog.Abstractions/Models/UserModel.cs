@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Models;
+﻿// set
+
+namespace AspireBlog.Abstractions.Models;
 
 public class UserModel
 {

@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogPostDtoMapper.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBLog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -21,9 +14,8 @@ public static class BlogPostDtoMapper
 	/// <returns>A BlogPostDto object.</returns>
 	public static BlogPostDto MapToBlogPostDto(this BlogPost? blogPost)
 	{
-		
 		Guard.Against.Null(blogPost, nameof(blogPost));
-		
+
 		return new BlogPostDto
 		{
 			Id = Guard.Against.EmptyObjectId(blogPost.Id, nameof(blogPost.Id)),
@@ -38,6 +30,5 @@ public static class BlogPostDtoMapper
 			Author = blogPost.Author,
 			Category = blogPost.Category
 		};
-		
 	}
 }

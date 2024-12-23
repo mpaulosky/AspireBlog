@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     GenericRepository.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Data.Mongo.Implementation;
 
@@ -47,7 +40,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	public async Task<T> GetByIdAsync(ObjectId id)
 	{
 		Guard.Against.Null(id, nameof(id));
-		var result = Guard.Against.Null(await _context.Set<T>().FindAsync(id), nameof(T));
+		T? result = Guard.Against.Null(await _context.Set<T>().FindAsync(id), nameof(T));
 		return result;
 	}
 
@@ -111,6 +104,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 		return await Task.FromResult(Enumerable.Empty<T>().AsQueryable());
 	}
+
 	/// <summary>
 	///   Finds entities that satisfy the specified predicate.
 	/// </summary>
@@ -121,13 +115,13 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	/// </returns>
 	public Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate)
 	{
-		var result = _context.Set<T>().Where(predicate).AsNoTracking();
+		IQueryable<T>? result = _context.Set<T>().Where(predicate).AsNoTracking();
 		return Task.FromResult(result);
 	}
 
 	public async Task<T> FirstAsync(Expression<Func<T, bool>> predicate)
 	{
-		var result = Guard.Against.Null(await _context.Set<T>().Where(predicate).AsNoTracking().FirstAsync(), nameof(T));
+		T? result = Guard.Against.Null(await _context.Set<T>().Where(predicate).AsNoTracking().FirstAsync(), nameof(T));
 		return result;
 	}
 

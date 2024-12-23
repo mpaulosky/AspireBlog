@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogPostMapperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -17,10 +10,10 @@ public class BlogPostMapperTests
 	public void MapToBlogPost_Should_Map_All_Properties_Correctly()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		// Act
-		var blogPost = blogPostDto.MapToBlogPost();
+		BlogPost? blogPost = blogPostDto.MapToBlogPost();
 
 		// Assert
 		blogPost.Id.Should().Be(blogPostDto.Id);
@@ -53,7 +46,7 @@ public class BlogPostMapperTests
 	public void MapToBlogPost_Should_Throw_ArgumentException_When_Id_Is_ObjectId_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Title = string.Empty;
 
@@ -68,7 +61,7 @@ public class BlogPostMapperTests
 	public void MapToBlogPost_Should_Throw_ArgumentException_When_Title_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Title = string.Empty;
 
@@ -83,7 +76,7 @@ public class BlogPostMapperTests
 	public void MapToBlogPost_Should_Throw_ArgumentException_When_Slug_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Slug = string.Empty;
 
@@ -98,7 +91,7 @@ public class BlogPostMapperTests
 	public void MapToBlogPost_Should_Throw_Exception_When_Introduction_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Introduction = string.Empty;
 
@@ -113,9 +106,9 @@ public class BlogPostMapperTests
 	public void Merge_Should_Update_All_Properties_Correctly()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		blogPostDto.Merge(blogPost);
@@ -140,7 +133,7 @@ public class BlogPostMapperTests
 		// Arrange
 		BlogPostDto? blogPostDto = null;
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		Action act = () => blogPostDto.Merge(blogPost);
@@ -153,7 +146,7 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throws_ArgumentNullException_When_BlogPost_Is_Null()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		BlogPost? blogPost = null;
 
@@ -168,11 +161,11 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throw_ArgumentException_When_Id_Is_ObjectId_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Title = string.Empty;
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		Action act = () => blogPostDto.Merge(blogPost);
@@ -185,11 +178,11 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throw_ArgumentException_When_Title_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Title = string.Empty;
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		Action act = () => blogPostDto.Merge(blogPost);
@@ -202,11 +195,11 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throw_ArgumentException_When_Slug_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Slug = string.Empty;
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		Action act = () => blogPostDto.Merge(blogPost);
@@ -219,11 +212,11 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throw_Exception_When_Introduction_Is_String_Empty()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
 		blogPostDto.Introduction = string.Empty;
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		// Act
 		Action act = () => blogPostDto.Merge(blogPost);
@@ -236,9 +229,9 @@ public class BlogPostMapperTests
 	public void Merge_Should_Throw_Exception_For_Null_Content()
 	{
 		// Arrange
-		var blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
+		BlogPostDto? blogPostDto = FakeBlogPostDto.GetNewBlogPostDto(true);
 
-		var blogPost = FakeBlogPost.GetNewBlogPost(true);
+		BlogPost? blogPost = FakeBlogPost.GetNewBlogPost(true);
 
 		blogPostDto.Content = string.Empty;
 

@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeCategoryDto.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -19,19 +12,17 @@ public static class FakeCategoryDto
 	/// <returns>CategoryDto</returns>
 	public static CategoryDto GetNewCategoryDto(bool keepId = false, bool useSeed = false)
 	{
-		
-		var categoryDto = FakeData(useSeed);
-		
+		CategoryDto? categoryDto = FakeData(useSeed);
+
 		if (!keepId)
 		{
 			categoryDto.Id = ObjectId.Empty;
 		}
-		
+
 		categoryDto.IsArchived = false;
 		categoryDto.ArchivedBy = null;
-		
+
 		return categoryDto;
-		
 	}
 
 	/// <summary>
@@ -42,16 +33,14 @@ public static class FakeCategoryDto
 	/// <returns>A List of CategoryDto</returns>
 	public static List<CategoryDto> GetCategoryDtos(int numberRequested, bool useSeed = false)
 	{
-		
 		var categories = new List<CategoryDto>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			categories.Add(FakeData(useSeed));
 		}
 
 		return categories;
-
 	}
 
 	/// <summary>
@@ -61,11 +50,11 @@ public static class FakeCategoryDto
 	/// <returns>A Faker CategoryDto</returns>
 	public static CategoryDto FakeData(bool useSeed = false)
 	{
-		var fakerData = new Faker<CategoryDto>()
+		Faker<CategoryDto>? fakerData = new Faker<CategoryDto>()
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(x => x.CategoryName, f =>
 			{
-				var category = f.PickRandom<CategoryNames>();
+				CategoryNames category = f.PickRandom<CategoryNames>();
 				return category switch
 				{
 					CategoryNames.AspNetCore => "ASP.NET Core",
@@ -78,15 +67,13 @@ public static class FakeCategoryDto
 			})
 			.RuleFor(x => x.IsArchived, f => f.Random.Bool(0.1f))
 			.RuleFor(x => x.ArchivedBy, (f, x) => x.IsArchived ? FakeUserDto.GetNewUserDto(true, true) : null);
-		
+
 		if (useSeed)
 		{
 			const int seed = 621;
 			return fakerData.UseSeed(seed).Generate();
 		}
-		else
-		{
-			return fakerData.Generate();
-		}
+
+		return fakerData.Generate();
 	}
 }
