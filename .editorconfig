@@ -19,7 +19,7 @@ indent_style = tab
 # Organize usings
 dotnet_separate_import_directive_groups = true
 dotnet_sort_system_directives_first = true
-file_header_template = unset
+file_header_template = set
 
 # this. and Me. preferences
 dotnet_style_qualification_for_event = false:silent
@@ -122,8 +122,9 @@ csharp_new_line_before_members_in_anonymous_types = true
 csharp_new_line_before_members_in_object_initializers = true
 csharp_new_line_before_open_brace = all
 csharp_new_line_between_query_expression_clauses = true
-csharp_new_line_after_open_brace = true
-csharp_new_line_before_close_brace = true
+csharp_new_line_after_open_brace = all
+csharp_new_line_before_close_brace = all
+csharp_new_line_after_close_brace = all
 
 # Indentation preferences
 csharp_indent_block_contents = true
@@ -154,15 +155,14 @@ csharp_space_between_method_call_parameter_list_parentheses = false
 csharp_space_between_method_declaration_empty_parameter_list_parentheses = false
 csharp_space_between_method_declaration_name_and_open_parenthesis = false
 csharp_space_between_method_declaration_parameter_list_parentheses = false
-csharp_space_between_parentheses = false
-csharp_space_between_square_brackets = false
+trim_trailing_whitespace = false
 
 # Wrapping preferences
 csharp_preserve_single_line_blocks = true
 csharp_preserve_single_line_statements = true
 csharp_style_namespace_declarations = file_scoped:warning
 csharp_style_prefer_method_group_conversion = true:silent
-csharp_style_prefer_top_level_statements = true:silent
+csharp_style_prefer_top_level_statements = false:silent
 csharp_style_prefer_null_check_over_type_check = true:suggestion
 csharp_style_prefer_local_over_anonymous_function = true:suggestion
 csharp_style_implicit_object_creation_when_type_is_apparent = true:suggestion
@@ -366,7 +366,7 @@ dotnet_naming_style.s_camelcase.required_prefix = s_
 dotnet_naming_style.s_camelcase.required_suffix =
 dotnet_naming_style.s_camelcase.word_separator =
 dotnet_naming_style.s_camelcase.capitalization = camel_case
-
+dotnet_separate_namespace_and_class_with_blank_line = true
 # Xml files
 [*.{csproj,props,targets,config,xml}]
 indent_style = tab
