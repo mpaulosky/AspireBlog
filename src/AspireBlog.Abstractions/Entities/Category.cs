@@ -1,8 +1,11 @@
-﻿namespace AspireBlog.Abstractions.Entities;
+﻿// set
+
+namespace AspireBlog.Abstractions.Entities;
 
 /// <summary>
 ///   Represents a category in the Aspire Blog.
 /// </summary>
+[Collection("categories")]
 public class Category
 {
 	private string? _categoryName;

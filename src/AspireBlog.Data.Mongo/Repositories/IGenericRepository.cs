@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     IGenericRepository.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Data.Mongo.Repositories;
 
@@ -19,7 +12,12 @@ public interface IGenericRepository<T> where T : class
 
 	Task<IQueryable<T>> GetAllAsync(int count, int page);
 
+	Task<IEnumerable<T>> GetAllAsync();
+
 	Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate);
+
+	Task<T> FirstAsync(Expression<Func<T, bool>> predicate);
+
 
 	void Create(T entity);
 

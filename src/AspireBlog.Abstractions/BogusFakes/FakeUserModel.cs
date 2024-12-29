@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeUserModel.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -14,7 +7,6 @@ namespace AspireBlog.Abstractions.BogusFakes;
 /// </summary>
 public static class FakeUserModel
 {
-	
 	/// <summary>
 	///   Gets a new user.
 	/// </summary>
@@ -23,8 +15,7 @@ public static class FakeUserModel
 	/// <returns>UserModel</returns>
 	public static UserModel GetNewUser(bool keepId = false, bool useSeed = false)
 	{
-		
-		var user = FakeData(useSeed);
+		UserModel? user = FakeData(useSeed);
 
 		if (!keepId)
 		{
@@ -32,7 +23,6 @@ public static class FakeUserModel
 		}
 
 		return user;
-		
 	}
 
 	/// <summary>
@@ -43,16 +33,14 @@ public static class FakeUserModel
 	/// <returns>A List of UserModels</returns>
 	public static List<UserModel> GetUsers(int numberRequested, bool useSeed = false)
 	{
-		
 		var users = new List<UserModel>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			users.Add(FakeData(useSeed));
 		}
 
 		return users;
-		
 	}
 
 	/// <summary>
@@ -62,23 +50,18 @@ public static class FakeUserModel
 	/// <returns>A Faker UserModel</returns>
 	private static UserModel FakeData(bool useSeed)
 	{
-		
-		var fakerData = new Faker<UserModel>()
+		Faker<UserModel>? fakerData = new Faker<UserModel>()
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(x => x.Name, f => f.Name.FullName())
 			.RuleFor(x => x.Email, (f, u) => f.Internet.Email(u.Name))
 			.RuleFor(x => x.Roles, f => [f.Random.Enum<Roles>().ToString()]);
-		
+
 		if (useSeed)
 		{
 			const int seed = 621;
 			return fakerData.UseSeed(seed).Generate();
 		}
-		else
-		{
-			return fakerData.Generate();
-		}
-		
+
+		return fakerData.Generate();
 	}
-	
 }

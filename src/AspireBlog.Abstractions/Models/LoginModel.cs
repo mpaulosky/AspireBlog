@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Models;
+﻿// set
+
+namespace AspireBlog.Abstractions.Models;
 
 public class LoginModel
 {
@@ -7,6 +9,9 @@ public class LoginModel
 	[DataType(DataType.EmailAddress)]
 	public string? Username { get; init; }
 
-	[Required, MinLength(10), MaxLength(25), DataType(DataType.Password)] 
+	[Required]
+	[MinLength(10)]
+	[MaxLength(25)]
+	[DataType(DataType.Password)]
 	public string? Password { get; set; }
 }

@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeBlogPostDto.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -22,7 +15,7 @@ public static class FakeBlogPostDto
 	/// <returns>BlogPostDto</returns>
 	public static BlogPostDto GetNewBlogPostDto(bool keepId = false, bool useSeed = false)
 	{
-		var postDto = FakeData(useSeed);
+		BlogPostDto? postDto = FakeData(useSeed);
 
 		if (!keepId)
 		{
@@ -42,12 +35,12 @@ public static class FakeBlogPostDto
 	{
 		var postsDto = new List<BlogPostDto>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			postsDto.Add(FakeData(useSeed));
 		}
 
-		foreach (var postDto in postsDto.Where(p => p.IsPublished == false))
+		foreach (BlogPostDto? postDto in postsDto.Where(p => p.IsPublished == false))
 		{
 			postDto.PublishedOn = null;
 		}
@@ -62,7 +55,7 @@ public static class FakeBlogPostDto
 	/// <returns>A Faker PostBlogPost</returns>
 	public static BlogPostDto FakeData(bool useSeed)
 	{
-		var fakerData = new Faker<BlogPostDto>()
+		Faker<BlogPostDto>? fakerData = new Faker<BlogPostDto>()
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(f => f.Title, f => f.Lorem.Sentence())
 			.RuleFor(f => f.ImageUrl, f => f.Image.PicsumUrl())
@@ -76,15 +69,12 @@ public static class FakeBlogPostDto
 			.RuleFor(f => f.Category, FakeCategoryDto.GetNewCategoryDto(true, true));
 
 
-		
 		if (useSeed)
 		{
 			const int seed = 621;
 			return fakerData.UseSeed(seed).Generate();
 		}
-		else
-		{
-			return fakerData.Generate();
-		}
+
+		return fakerData.Generate();
 	}
 }

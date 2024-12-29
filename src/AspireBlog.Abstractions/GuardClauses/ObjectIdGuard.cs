@@ -1,5 +1,4 @@
-﻿// Using the same namespace will make sure your code picks up your 
-// extensions no matter where they are in your codebase.
+﻿// set
 
 namespace AspireBlog.Abstractions.GuardClauses;
 

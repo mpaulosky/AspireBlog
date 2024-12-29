@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     Enums.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Enum;
 
@@ -29,7 +22,7 @@ public enum Roles
 }
 
 /// <summary>
-/// Category enum
+///   Category enum
 /// </summary>
 public enum CategoryNames
 {

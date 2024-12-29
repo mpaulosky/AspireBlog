@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Data.Mongo.Services;
+﻿// set
+
+namespace AspireBlog.Data.Mongo.Services;
 
 public class UserService : IUserService
 {
@@ -24,7 +26,7 @@ public class UserService : IUserService
 	///   Gets the user by identifier asynchronously.
 	/// </summary>
 	/// <param name="id">The identifier.</param>
-	/// <returns>The userDto if found; otherwise, null.</returns>
+	/// <returns>The userInfoDto if found; otherwise, null.</returns>
 	public async Task<UserDto?> GetByIdAsync(ObjectId id)
 	{
 		Guard.Against.EmptyObjectId(id, nameof(id));

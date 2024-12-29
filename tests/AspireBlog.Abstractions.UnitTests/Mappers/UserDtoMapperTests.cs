@@ -1,17 +1,10 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UserDtoMapperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
 [ExcludeFromCodeCoverage]
-[TestSubject(typeof(UserDtoMapper))]
-public class UserDtoMapperTests
+[TestSubject(typeof(UserMapper))]
+public class UserMapperTests
 {
 	[Fact]
 	public void MapToUserDto_ValidUser_ReturnsUserDto()
@@ -28,7 +21,7 @@ public class UserDtoMapperTests
 		};
 
 		// Act
-		var result = user.MapToUserDto();
+		UserDto result = user.MapToUserDto();
 
 		// Assert
 		result.Id.Should().Be(user.Id);
@@ -54,7 +47,7 @@ public class UserDtoMapperTests
 		};
 
 		// Act
-		var result = userDto.MapToUser();
+		User result = userDto.MapToUser();
 
 		// Assert
 		result.Id.Should().Be(userDto.Id);

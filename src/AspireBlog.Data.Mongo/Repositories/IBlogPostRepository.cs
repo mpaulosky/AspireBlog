@@ -1,12 +1,10 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     IActorRepository.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Data.Mongo
-// =============================================
+// set
 
 namespace AspireBlog.Data.Mongo.Repositories;
 
-public interface IBlogPostRepository : IGenericRepository<BlogPost>;
+public interface IBlogPostRepository : IGenericRepository<BlogPost>
+{
+	Task<BlogPost?> GetPostBySlugAsync(string slug);
+
+	Task<IEnumerable<BlogPost>> GetPostsAsync(bool publishedOnly = false, string? categorySlug = null);
+}

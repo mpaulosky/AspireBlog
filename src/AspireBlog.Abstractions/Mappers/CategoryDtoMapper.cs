@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     CategoryDtoMapper.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBLog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 

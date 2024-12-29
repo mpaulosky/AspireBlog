@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     GuardClauseExtensionsTest.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.GuardClauses;
 
@@ -16,10 +9,9 @@ public class GuardClauseExtensionsTest
 	[Fact]
 	public void EmptyObjectId_ShouldThrowArgumentException_WhenObjectIdIsEmpty()
 	{
-		
 		// Arrange
 		var guardClause = new GuardClause();
-		var emptyObjectId = ObjectId.Empty;
+		ObjectId emptyObjectId = ObjectId.Empty;
 		const string parameterName = "testParameter";
 
 		// Act
@@ -27,36 +19,32 @@ public class GuardClauseExtensionsTest
 
 		// Assert
 		act.Should().Throw<ArgumentException>()
-			.WithMessage($"Required input testParameter was empty. (Parameter 'testParameter')")
+			.WithMessage("Required input testParameter was empty. (Parameter 'testParameter')")
 			.And.ParamName.Should().Be(parameterName);
-		
 	}
 
 	[Fact]
 	public void EmptyObjectId_ShouldReturnObjectId_WhenObjectIdIsNotEmpty()
 	{
-		
 		// Arrange
 		var guardClause = new GuardClause();
 		var nonEmptyObjectId = new ObjectId("507f1f77bcf86cd799439011");
-		var parameterName = "testParameter";
+		string? parameterName = "testParameter";
 
 		// Act
-		var result = guardClause.EmptyObjectId(nonEmptyObjectId, parameterName);
+		ObjectId result = guardClause.EmptyObjectId(nonEmptyObjectId, parameterName);
 
 		// Assert
 		result.Should().Be(nonEmptyObjectId);
-		
 	}
 
 	[Fact]
 	public void EmptyObjectId_ShouldThrowCustomException_WhenObjectIdIsEmptyAndExceptionCreatorIsProvided()
 	{
-		
 		// Arrange
 		var guardClause = new GuardClause();
-		var emptyObjectId = ObjectId.Empty;
-		var parameterName = "testParameter";
+		ObjectId emptyObjectId = ObjectId.Empty;
+		string? parameterName = "testParameter";
 		Func<Exception> exceptionCreator = () => new InvalidOperationException("Custom exception message");
 
 		// Act
@@ -65,7 +53,6 @@ public class GuardClauseExtensionsTest
 		// Assert
 		act.Should().Throw<InvalidOperationException>()
 			.WithMessage("Custom exception message");
-		
 	}
 }
 

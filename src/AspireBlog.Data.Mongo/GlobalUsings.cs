@@ -1,11 +1,6 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     GlobalUsings.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Data.Mongo
-// =============================================
+// set
+
+#region
 
 global using System.Linq.Expressions;
 
@@ -13,6 +8,9 @@ global using Ardalis.GuardClauses;
 
 global using AspireBlog.Abstractions.Entities;
 global using AspireBlog.Abstractions.GuardClauses;
+
+global using static AspireBlog.Abstractions.Helpers.Helpers;
+
 global using AspireBlog.Abstractions.Interfaces;
 global using AspireBlog.Abstractions.Mappers;
 global using AspireBlog.Abstractions.Models;
@@ -23,4 +21,5 @@ global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.Logging;
 
 global using MongoDB.Bson;
-global using MongoDB.Driver;
+
+#endregion

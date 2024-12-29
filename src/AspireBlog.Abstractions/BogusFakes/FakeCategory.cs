@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeCategory.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -14,7 +7,6 @@ namespace AspireBlog.Abstractions.BogusFakes;
 /// </summary>
 public static class FakeCategory
 {
-	
 	/// <summary>
 	///   Gets a new category.
 	/// </summary>
@@ -23,19 +15,17 @@ public static class FakeCategory
 	/// <returns>Category</returns>
 	public static Category GetNewCategory(bool keepId = false, bool useSeed = false)
 	{
-		
-		var category = FakeData(useSeed);
+		Category? category = FakeData(useSeed);
 
 		if (!keepId)
 		{
 			category.Id = ObjectId.Empty;
 		}
-		
+
 		category.IsArchived = false;
 		category.ArchivedBy = null;
 
 		return category;
-		
 	}
 
 	/// <summary>
@@ -46,16 +36,14 @@ public static class FakeCategory
 	/// <returns>A List of Categories</returns>
 	public static List<Category> GetCategories(int numberRequested, bool useSeed = false)
 	{
-		
 		var categories = new List<Category>();
 
-		for (var i = 0; i < numberRequested; i++)
+		for (int i = 0; i < numberRequested; i++)
 		{
 			categories.Add(FakeData(useSeed));
 		}
 
 		return categories;
-		
 	}
 
 	/// <summary>
@@ -65,11 +53,11 @@ public static class FakeCategory
 	/// <returns>A Faker Category</returns>
 	public static Category FakeData(bool useSeed = false)
 	{
-		var fakerData = new Faker<Category>()
+		Faker<Category>? fakerData = new Faker<Category>()
 			.RuleFor(x => x.Id, ObjectId.GenerateNewId())
 			.RuleFor(x => x.CategoryName, f =>
 			{
-				var category = f.PickRandom<CategoryNames>();
+				CategoryNames category = f.PickRandom<CategoryNames>();
 				return category switch
 				{
 					CategoryNames.AspNetCore => "ASP.NET Core",
@@ -83,16 +71,13 @@ public static class FakeCategory
 			.RuleFor(x => x.IsArchived, f => f.Random.Bool(0.1f))
 			.RuleFor(x => x.ArchivedBy, (f, x) => x.IsArchived ? FakeUserDto.GetNewUserDto(true, true) : null);
 
-		
+
 		if (useSeed)
 		{
 			const int seed = 621;
 			return fakerData.UseSeed(seed).Generate();
 		}
-		else
-		{
-			return fakerData.Generate();
-		}
+
+		return fakerData.Generate();
 	}
-	
 }

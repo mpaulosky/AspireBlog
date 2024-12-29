@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     CategoryMapperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -34,7 +27,7 @@ public class CategoryMapperTests
 		};
 
 		// Act
-		var result = categoryDto.MapToCategory();
+		Category? result = categoryDto.MapToCategory();
 
 		// Assert
 		result.Id.Should().Be(categoryDto.Id);
@@ -157,7 +150,7 @@ public class CategoryMapperTests
 		// Assert
 		act.Should().Throw<ArgumentNullException>().WithMessage("*ArchivedBy*");
 	}
-	
+
 	[Fact]
 	public void Merge_ShouldMapCategoryDtoToCategory()
 	{
@@ -173,7 +166,7 @@ public class CategoryMapperTests
 		var category = new Category();
 
 		// Act
-		var result = categoryDto.Merge(category);
+		Category? result = categoryDto.Merge(category);
 
 		// Assert
 		result.Id.Should().Be(categoryDto.Id);
@@ -187,7 +180,7 @@ public class CategoryMapperTests
 	public void Merge_ShouldSetArchivedBy_WhenIsArchivedIsTrue()
 	{
 		// Arrange
-		var archivedBy = FakeUserDto.GetNewUserDto(true, true);
+		UserDto? archivedBy = FakeUserDto.GetNewUserDto(true, true);
 		var categoryDto = new CategoryDto
 		{
 			Id = ObjectId.GenerateNewId(),
@@ -199,7 +192,7 @@ public class CategoryMapperTests
 		var category = new Category();
 
 		// Act
-		var result = categoryDto.Merge(category);
+		Category? result = categoryDto.Merge(category);
 
 		// Assert
 		result.Id.Should().Be(categoryDto.Id);

@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakeUserTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -17,7 +10,7 @@ public class FakeUserTests
 	public void GetNewUser_Should_Return_User_Without_Id_When_KeepId_Is_False()
 	{
 		// Act
-		var user = FakeUser.GetNewUser(keepId: false);
+		User? user = FakeUser.GetNewUser();
 
 		// Assert
 		user.Id.Should().Be(ObjectId.Empty);
@@ -27,7 +20,7 @@ public class FakeUserTests
 	public void GetNewUser_Should_Return_User_With_Id_When_KeepId_Is_True()
 	{
 		// Act
-		var user = FakeUser.GetNewUser(keepId: true);
+		User? user = FakeUser.GetNewUser(true);
 
 		// Assert
 		user.Id.Should().NotBe(ObjectId.Empty);
@@ -37,8 +30,8 @@ public class FakeUserTests
 	public void GetNewUser_Should_Return_Same_User_When_UseSeed_Is_True()
 	{
 		// Act
-		var user1 = FakeUser.GetNewUser(useSeed: true);
-		var user2 = FakeUser.GetNewUser(useSeed: true);
+		User? user1 = FakeUser.GetNewUser(useSeed: true);
+		User? user2 = FakeUser.GetNewUser(useSeed: true);
 
 		// Assert
 		user1.Should().BeEquivalentTo(user2);
@@ -51,7 +44,7 @@ public class FakeUserTests
 		const int numberRequested = 5;
 
 		// Act
-		var users = FakeUser.GetUserDtos(numberRequested, useSeed: false);
+		List<User>? users = FakeUser.GetUserDtos(numberRequested);
 
 		// Assert
 		users.Should().HaveCount(numberRequested);
@@ -63,8 +56,8 @@ public class FakeUserTests
 	public void GetUserDtos_Should_Return_Different_Users_When_UseSeed_Is_False(int countRequested, bool useSeed)
 	{
 		// Act
-		var users1 = FakeUser.GetUserDtos(countRequested, useSeed);
-		var users2 = FakeUser.GetUserDtos(countRequested, useSeed);
+		List<User>? users1 = FakeUser.GetUserDtos(countRequested, useSeed);
+		List<User>? users2 = FakeUser.GetUserDtos(countRequested, useSeed);
 
 		// Assert
 		users1.Should().NotBeEquivalentTo(users2);
@@ -76,18 +69,18 @@ public class FakeUserTests
 	public void GetUserDtos_Should_Return_Same_Users_When_UseSeed_Is_True(int countRequested, bool useSeed)
 	{
 		// Act
-		var users1 = FakeUser.GetUserDtos(countRequested, useSeed);
-		var users2 = FakeUser.GetUserDtos(countRequested, useSeed);
+		List<User>? users1 = FakeUser.GetUserDtos(countRequested, useSeed);
+		List<User>? users2 = FakeUser.GetUserDtos(countRequested, useSeed);
 
 		// Assert
 		users1.Should().NotBeEquivalentTo(users2);
 	}
-	
+
 	[Fact]
 	public void FakeData_Should_Return_Valid_User()
 	{
 		// Act
-		var user = FakeUser.FakeData();
+		User? user = FakeUser.FakeData();
 
 		// Assert
 		user.Should().NotBeNull();
@@ -101,10 +94,9 @@ public class FakeUserTests
 	[Fact]
 	public void FakeData_ShouldReturnDifferentUser_WhenUseSeedIsTrue()
 	{
-		
 		// Act
-		var user1 = FakeUser.FakeData(useSeed: true);
-		var user2 = FakeUser.FakeData(useSeed: true);
+		User? user1 = FakeUser.FakeData(true);
+		User? user2 = FakeUser.FakeData(true);
 
 		// Assert
 		user1.Id.Should().NotBe(user2.Id);
@@ -112,16 +104,14 @@ public class FakeUserTests
 		user1.LastName.Should().BeEquivalentTo(user2.LastName);
 		user1.FullName.Should().BeEquivalentTo(user2.FullName);
 		user1.Email.Should().BeEquivalentTo(user2.Email);
-		
 	}
 
 	[Fact]
 	public void FakeData_Should_Return_Different_User_When_UseSeed_Is_False()
 	{
-		
 		// Act
-		var user1 = FakeUser.FakeData(useSeed: false);
-		var user2 = FakeUser.FakeData(useSeed: false);
+		User? user1 = FakeUser.FakeData();
+		User? user2 = FakeUser.FakeData();
 
 		// Assert
 		user1.Id.Should().NotBeSameAs(user2.Id);
@@ -129,15 +119,14 @@ public class FakeUserTests
 		user1.LastName.Should().NotBeEquivalentTo(user2.LastName);
 		user1.FullName.Should().NotBeEquivalentTo(user2.FullName);
 		user1.Email.Should().NotBeEquivalentTo(user2.Email);
-		
 	}
 
 	[Fact]
 	public void FakeData_ShouldAssignDifferentIdsToDifferentUsers()
 	{
 		// Act
-		var user1 = FakeUser.FakeData();
-		var user2 = FakeUser.FakeData();
+		User? user1 = FakeUser.FakeData();
+		User? user2 = FakeUser.FakeData();
 
 		// Assert
 		user1.Id.Should().NotBe(user2.Id);

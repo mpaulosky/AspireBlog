@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Data.Mongo.Services;
+﻿// set
+
+namespace AspireBlog.Data.Mongo.Services;
 
 /// <summary>
 ///   Service for managing categories.

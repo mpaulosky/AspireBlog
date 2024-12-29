@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     CategoryDto.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Models;
 
@@ -14,7 +7,7 @@ namespace AspireBlog.Abstractions.Models;
 /// </summary>
 public class CategoryDto
 {
-	private string? _categoryName;
+	private readonly string? _categoryName;
 
 	/// <summary>
 	///   Gets or sets the identifier.
@@ -50,10 +43,8 @@ public class CategoryDto
 			}
 		}
 	}
-	
-	[Required]
-	[MaxLength(125)]
-	public string? Slug { get; init; }
+
+	[Required] [MaxLength(125)] public string? Slug { get; init; }
 
 	/// <summary>
 	///   Gets or sets a value indicating whether this <see cref="Category" /> is archived.

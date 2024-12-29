@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Data.Mongo.Services;
+﻿// set
+
+namespace AspireBlog.Data.Mongo.Services;
 
 public class BlogPostService : IBlogPostService
 {
@@ -22,7 +24,7 @@ public class BlogPostService : IBlogPostService
 
 		try
 		{
-			var blogPost = Guard.Against.Null(await _unitOfWork.BlogPost.GetByIdAsync(id), nameof(BlogPost));
+			BlogPost? blogPost = Guard.Against.Null(await _unitOfWork.BlogPost.GetByIdAsync(id), nameof(BlogPost));
 
 			_logger.LogInformation("Returned blogPost with id: {id}", id);
 
@@ -71,7 +73,7 @@ public class BlogPostService : IBlogPostService
 	{
 		try
 		{
-			var categories =
+			IQueryable<BlogPost>? categories =
 				Guard.Against.Null(await _unitOfWork.BlogPost.GetAllAsync(count, page), nameof(IQueryable<BlogPost>));
 
 			_logger.LogInformation("Returned categories");
@@ -100,7 +102,7 @@ public class BlogPostService : IBlogPostService
 	{
 		try
 		{
-			var categories = Guard.Against.Null(await _unitOfWork.BlogPost.GetAllAsync(count, page));
+			IQueryable<BlogPost>? categories = Guard.Against.Null(await _unitOfWork.BlogPost.GetAllAsync(count, page));
 
 			_logger.LogInformation("Returned IQueryable categories");
 

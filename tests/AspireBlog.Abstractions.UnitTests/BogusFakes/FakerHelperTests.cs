@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     FakerHelperTests.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.BogusFakes;
 
@@ -17,7 +10,7 @@ public class FakerHelperTests
 	public void GetSeedValue_Should_Return_Value_Between_10_And_IntMaxValue()
 	{
 		// Act
-		var seedValue = FakerHelper.GetSeedValue();
+		int seedValue = FakerHelper.GetSeedValue();
 
 		// Assert
 		seedValue.Should().BeInRange(10, int.MaxValue);
@@ -27,8 +20,8 @@ public class FakerHelperTests
 	public void GetSeedValue_Should_Return_Different_Values_On_Subsequent_Calls()
 	{
 		// Act
-		var firstSeedValue = FakerHelper.GetSeedValue();
-		var secondSeedValue = FakerHelper.GetSeedValue();
+		int firstSeedValue = FakerHelper.GetSeedValue();
+		int secondSeedValue = FakerHelper.GetSeedValue();
 
 		// Assert
 		firstSeedValue.Should().NotBe(secondSeedValue);

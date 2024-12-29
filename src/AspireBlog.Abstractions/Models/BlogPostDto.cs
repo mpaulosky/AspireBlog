@@ -1,18 +1,10 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     BlogPostDto.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Models;
 
 [Serializable]
 public class BlogPostDto
 {
-	
 	private string? _title;
 
 	[BsonId] [BsonElement("_id")] [Key] public ObjectId Id { get; set; } = ObjectId.Empty;
@@ -45,11 +37,10 @@ public class BlogPostDto
 	public DateTime? PublishedOn { get; set; }
 
 	public DateTime? ModifiedOn { get; set; }
-	
+
 	[MaxLength(100)] public string? ImageUrl { get; init; }
 
 	public CategoryDto? Category { get; set; }
 
 	public UserDto? Author { get; set; }
-
 }

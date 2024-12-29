@@ -1,4 +1,6 @@
-﻿namespace AspireBlog.Abstractions.Models;
+﻿// set
+
+namespace AspireBlog.Abstractions.Models;
 
 [ExcludeFromCodeCoverage]
 public readonly record struct LoggedInUser(ObjectId UserId, string DisplayName)

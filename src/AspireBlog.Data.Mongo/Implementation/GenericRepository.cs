@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     GenericRepository.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Data.Mongo.Implementation;
 
@@ -47,7 +40,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	public async Task<T> GetByIdAsync(ObjectId id)
 	{
 		Guard.Against.Null(id, nameof(id));
-		var result = Guard.Against.Null(await _context.Set<T>().FindAsync(id), nameof(T));
+		T? result = Guard.Against.Null(await _context.Set<T>().FindAsync(id), nameof(T));
 		return result;
 	}
 
@@ -62,6 +55,28 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 		// ReSharper disable once EntityFramework.ClientSideDbFunctionCall
 		T? result = await _context.Set<T>().FirstOrDefaultAsync(c => EF.Property<string>(c, "slug") == slug);
 		return Guard.Against.Null(result, nameof(T));
+	}
+
+	/// <summary>
+	///   Gets all entities.
+	/// </summary>
+	/// <returns>A task that represents the asynchronous operation. The task result contains a collection of all entities.</returns>
+	public async Task<IEnumerable<T>> GetAllAsync()
+	{
+		IQueryable<T> posts = _context.Set<T>().AsNoTracking();
+
+		if (posts.Any())
+		{
+			var result = posts
+				// ReSharper disable once EntityFramework.ClientSideDbFunctionCall
+				.OrderByDescending(p => EF.Property<DateTime>(p, "CreatedOn"))
+				.AsQueryable()
+				.ToList();
+
+			return await Task.FromResult(result);
+		}
+
+		return await Task.FromResult(Enumerable.Empty<T>().ToList());
 	}
 
 	/// <summary>
@@ -100,8 +115,14 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 	/// </returns>
 	public Task<IQueryable<T>> FindAsync(Expression<Func<T, bool>> predicate)
 	{
-		var result = _context.Set<T>().Where(predicate).AsNoTracking();
+		IQueryable<T>? result = _context.Set<T>().Where(predicate).AsNoTracking();
 		return Task.FromResult(result);
+	}
+
+	public async Task<T> FirstAsync(Expression<Func<T, bool>> predicate)
+	{
+		T? result = Guard.Against.Null(await _context.Set<T>().Where(predicate).AsNoTracking().FirstAsync(), nameof(T));
+		return result;
 	}
 
 	/// <summary>

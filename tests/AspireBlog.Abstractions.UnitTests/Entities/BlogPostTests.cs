@@ -1,3 +1,5 @@
+// set
+
 namespace AspireBlog.Abstractions.Entities;
 
 [ExcludeFromCodeCoverage]
@@ -8,20 +10,21 @@ public class BlogPostTests
 	public void Title_SetTitle_ShouldSetSlug()
 	{
 		// Arrange
-		BlogPost blogPost = new BlogPost {
-			// Act
-			Title = "Test Title" };
+		var blogPost = new BlogPost { Title = "Test Title" };
 
 		// Assert
-		blogPost.Slug.Should().Be("test%20title");
+		blogPost.Slug.Should().Be("test-title");
 	}
 
 	[Fact]
 	public void Title_SetTitle_ShouldNotChangeExistingSlug()
 	{
 		// Arrange
-		BlogPost blogPost = new BlogPost { Slug = "existing-slug", // Act
-			Title = "New Title" };
+		var blogPost = new BlogPost
+		{
+			Slug = "existing-slug", // Act
+			Title = "New Title"
+		};
 
 		// Assert
 		blogPost.Slug.Should().Be("existing-slug");
@@ -31,7 +34,7 @@ public class BlogPostTests
 	public void BlogPost_DefaultValues_ShouldBeSetCorrectly()
 	{
 		// Arrange & Act
-		BlogPost blogPost = new BlogPost();
+		var blogPost = new BlogPost();
 
 		// Assert
 		blogPost.Id.Should().Be(ObjectId.Empty);

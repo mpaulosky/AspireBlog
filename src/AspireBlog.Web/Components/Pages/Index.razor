@@ -1,0 +1,74 @@
+﻿@page "/"
+@page "/c/{categorySlug}/posts"
+@using AspireBlog.Abstractions.Entities
+@using AspireBlog.Data.Mongo.Repositories
+@using Microsoft.AspNetCore.Components.Authorization
+
+@inject IUnitOfWork UnitOfWork
+@inject NavigationManager Navigation
+
+<PageTitle>@_heading | BlazingBlog</PageTitle>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			<h1 class="fs-3">@_heading</h1>
+			<hr/>
+			@if (!_posts.Any())
+			{
+				<div class="d-flex justify-content-center flex-column align-items-center" style="min-height: 250px">
+					<h3>No blog posts found</h3>
+					<AuthorizeView>
+						<Authorized>
+							<NavLink href="/admin/manage-blogs/new" class="btn btn-primary">Click here to create a new blog post
+							</NavLink>
+						</Authorized>
+						<NotAuthorized>
+							<p>Please check back later</p>
+						</NotAuthorized>
+					</AuthorizeView>
+				</div>
+			}
+			else
+			{
+				<BlogPosts Posts="posts"/>
+			}
+		</div>
+		<div class="col-sm-3">
+			<CategoriesBox CategorySlug="@CategorySlug" OnCategoryNameFound="SetHeading"/>
+		</div>
+	</div>
+</div>
+
+@code{
+	[Parameter] public string? CategorySlug { get; set; }
+
+	private string _heading = "Latest Posts";
+
+	private IEnumerable<BlogPost> _posts = [];
+
+	protected override async Task OnParametersSetAsync()
+	{
+		await SetDataAsync();
+	}
+
+	private async Task SetDataAsync()
+	{
+		var postsTask = await UnitOfWork.BlogPost.GetPostsAsync(true, CategorySlug);
+
+		_posts = postsTask;
+	}
+
+	private void SetHeading(string? categoryName = null)
+	{
+		if (!string.IsNullOrWhiteSpace(CategorySlug) && !string.IsNullOrWhiteSpace(categoryName))
+		{
+			_heading = $"Latest {categoryName} Posts";
+		}
+		else
+		{
+			_heading = "Latest Posts";
+		}
+	}
+
+}

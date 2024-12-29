@@ -1,0 +1,78 @@
+﻿@page "/posts/{slug}"
+@using AspireBlog.Abstractions.Entities
+@using AspireBlog.Data.Mongo.Repositories
+@using MongoDB.Bson
+
+@inject IUnitOfWork UnitOfWork
+
+<PageTitle>@_post.Title | BlazingBlog</PageTitle>
+
+<div class="container">
+	<div class="row">
+		<div class="col-sm-9">
+			@if (_notFound)
+			{
+				<div class="d-flex justify-content-center flex-column align-items-center" style="min-height: 250px">
+					<h3>Not found</h3>
+					<NavLink href="/" class="btn btn-primary">Click here to see the latest blog posts</NavLink>
+				</div>
+			}
+			else if (_post.Id != ObjectId.Empty)
+			{
+				var color = Utilities.GetRandomColorClass();
+				var categoryTitle = $"{_post.Category.CategoryName} Blog Posts";
+				var categoryPostsLink = $"/c/{_post.Category.Slug}/posts";
+
+				<h1 class="fs-1 bg-@color text-white p-5 rounded">@_post.Title</h1>
+				<small>
+					<label>
+						<NavLink href="@categoryPostsLink" class="text-decoration-none"
+						         title="@categoryTitle">@_post.Category.CategoryName</NavLink>
+					</label>
+					<label>
+						@_post.PublishedOn.Value.ToShortDateString()
+					</label>
+				</small>
+				<p class="fs-6">@_post.Introduction</p>
+				<hr/>
+				<div class="main-content">
+					@((MarkupString)_post.Content)
+				</div>
+			}
+			else
+			{
+				<p>Fetching blog post...</p>
+			}
+		</div>
+		<div class="col-sm-3">
+			<CategoriesBox/>
+		</div>
+	</div>
+</div>
+
+
+@code {
+	[Parameter] public string Slug { get; set; } = string.Empty;
+
+	private BlogPost _post = new();
+
+	private bool _notFound;
+
+	protected override async Task OnInitializedAsync()
+	{
+		if (!string.IsNullOrWhiteSpace(Slug))
+		{
+			var dbBlog = await UnitOfWork.BlogPost.GetPostBySlugAsync(Slug);
+
+			if (dbBlog is null)
+			{
+				_notFound = true;
+			}
+			else
+			{
+				_post = dbBlog;
+			}
+		}
+	}
+
+}

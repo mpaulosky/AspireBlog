@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     CategoryMapper.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : MyAspireBlogApp
-// Project Name :  AspireBLog.Abstractions
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Mappers;
 
@@ -21,9 +14,8 @@ public static class CategoryMapper
 	/// <returns>A Category object.</returns>
 	public static Category MapToCategory(this CategoryDto categoryDto)
 	{
-		
 		Guard.Against.Null(categoryDto, nameof(categoryDto));
-		
+
 		return new Category
 		{
 			Id = Guard.Against.EmptyObjectId(categoryDto!.Id, nameof(categoryDto.Id)),
@@ -32,7 +24,6 @@ public static class CategoryMapper
 			IsArchived = categoryDto.IsArchived,
 			ArchivedBy = Guard.Against.Null(categoryDto.ArchivedBy, nameof(categoryDto.ArchivedBy))
 		};
-		
 	}
 
 	/// <summary>
@@ -43,10 +34,9 @@ public static class CategoryMapper
 	/// <returns>A Category object.</returns>
 	public static Category Merge(this CategoryDto categoryDto, Category entity)
 	{
-		
 		Guard.Against.Null(categoryDto, nameof(categoryDto));
 		Guard.Against.Null(entity, nameof(entity));
-		
+
 		entity.Id = Guard.Against.EmptyObjectId(categoryDto!.Id, nameof(categoryDto.Id));
 		entity.CategoryName = Guard.Against.NullOrWhiteSpace(categoryDto.CategoryName);
 		entity.Slug = Guard.Against.NullOrWhiteSpace(categoryDto.Slug);
@@ -55,7 +45,5 @@ public static class CategoryMapper
 			? Guard.Against.Null(categoryDto.ArchivedBy, nameof(categoryDto.ArchivedBy))
 			: null;
 		return entity;
-		
 	}
-	
 }

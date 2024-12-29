@@ -1,8 +1,11 @@
-﻿namespace AspireBlog.Abstractions.Entities;
+﻿// set
+
+namespace AspireBlog.Abstractions.Entities;
 
 /// <summary>
 ///   Represents a user in the Aspire Blog.
 /// </summary>
+[Collection("users")]
 public class User
 {
 	/// <summary>
@@ -62,7 +65,7 @@ public class User
 	[Required]
 	[MaxLength(100)]
 	public string? Email { get; init; }
-	
+
 	/// <summary>
 	///   Gets or sets the roles of the user.
 	/// </summary>

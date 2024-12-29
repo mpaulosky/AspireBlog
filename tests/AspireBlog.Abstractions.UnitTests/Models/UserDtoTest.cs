@@ -1,22 +1,14 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     UserDtoTest.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Models;
+
 [ExcludeFromCodeCoverage]
 [TestSubject(typeof(UserDto))]
 public class UserDtoTest
 {
-	
 	[Fact]
 	public void UserDto_Should_Have_Default_Values()
 	{
-		
 		// Arrange & Act
 		var userDto = new UserDto();
 
@@ -27,32 +19,28 @@ public class UserDtoTest
 		userDto.FullName.Should().BeNull();
 		userDto.Email.Should().BeNull();
 		userDto.Roles.Should().BeNull();
-		
 	}
 
 	[Fact]
 	public void UserDto_Should_Set_Properties_Correctly()
 	{
-		
 		// Arrange
 		var id = new ObjectId("507f1f77bcf86cd799439011");
 		const string firstName = "John";
 		const string lastName = "Doe";
 		const string fullName = "John Doe";
 		const string email = "john.doe@example.com";
-		var roles = new[] { "Admin", "User" };
+		string[]? roles = new[] { "Admin", "User" };
 
 		// Act
 		var userDto = new UserDto
 		{
-			
 			Id = id,
 			FirstName = firstName,
 			LastName = lastName,
 			FullName = fullName,
 			Email = email,
 			Roles = roles
-			
 		};
 
 		// Assert
@@ -62,7 +50,5 @@ public class UserDtoTest
 		userDto.FullName.Should().Be(fullName);
 		userDto.Email.Should().Be(email);
 		userDto.Roles.Should().BeEquivalentTo(roles);
-		
 	}
-	
 }

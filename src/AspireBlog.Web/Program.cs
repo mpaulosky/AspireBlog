@@ -1,13 +1,32 @@
-WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
+// set
 
-#region Add service defaults.
+#region
 
+using AspireBlog.Web;
+using AspireBlog.Web.Components;
+using AspireBlog.Web.Extensions;
+
+using Auth0.AspNetCore.Authentication;
+
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Components.Authorization;
+
+#endregion
+
+WebApplicationBuilder? builder = WebApplication.CreateBuilder(args);
+
+// Add service defaults & Aspire client integrations.
 builder.AddServiceDefaults();
+builder.AddRedisOutputCache("cache");
 
-#endregion Add service defaults.
+// Add services to the container.
+builder.Services.AddRazorComponents()
+	.AddInteractiveServerComponents();
 
-// TODO: Add authentication fix errors
-// Issue URL: https://github.com/mpaulosky/AspireBlog/issues/19
+builder.AddDbContextFactory();
+
+builder.Services.AddCascadingAuthenticationState();
 
 builder.Services
 	.AddAuth0WebAppAuthentication(options =>
@@ -16,28 +35,45 @@ builder.Services
 		options.ClientId = builder.Configuration["Auth0:ClientId"] ?? "";
 	});
 
-builder.Services.AddCascadingAuthenticationState();
+builder.Services.AddScoped<AuthenticationStateProvider, PersistingServerAuthenticationStateProvider>();
 
-// Add BlogDbContextFactory
+WebApplication? app = builder.Build();
 
-builder.AddMongoDBClient(MongoDbName);
+if (!app.Environment.IsDevelopment())
+{
+	app.UseExceptionHandler("/Error", true);
+	// The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+	app.UseHsts();
+}
 
-builder.RegisterBlogDbContextFactory();
+app.UseHttpsRedirection();
 
-// Register Redis Output Cache
-builder.RegisterRedisOutputCache();
+app.UseAntiforgery();
 
-// Register Implementations of the repositories
-builder.RegisterImplementations();
+app.UseOutputCache();
 
-// Register the services
-builder.RegisterServices();
+app.MapStaticAssets();
 
-// Register the application services
-builder.RegisterApplicationServices();
+app.MapRazorComponents<App>()
+	.AddInteractiveServerRenderMode();
 
-WebApplication app = builder.Build();
+app.MapDefaultEndpoints();
 
-app.AddAppSettings();
+app.MapGet("Account/Login", async (string returnUrl, HttpContext context) =>
+{
+	AuthenticationProperties? authenticationProperties = new LoginAuthenticationPropertiesBuilder()
+		.WithRedirectUri(returnUrl)
+		.Build();
+	await context.ChallengeAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
+});
+
+app.MapGet("authentication/logout", async context =>
+{
+	AuthenticationProperties? authenticationProperties = new LogoutAuthenticationPropertiesBuilder()
+		.WithRedirectUri("/")
+		.Build();
+	await context.SignOutAsync(Auth0Constants.AuthenticationScheme, authenticationProperties);
+	await context.SignOutAsync(CookieAuthenticationDefaults.AuthenticationScheme);
+});
 
 app.Run();

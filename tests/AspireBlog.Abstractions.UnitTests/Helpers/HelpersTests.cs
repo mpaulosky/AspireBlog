@@ -1,11 +1,4 @@
-// ============================================
-// Copyright (c) 2024. All rights reserved.
-// File Name :     t.cs
-// Company :       mpaulosky
-// Author :        Matthew Paulosky
-// Solution Name : AspireBlog
-// Project Name :  AspireBlog.Abstractions.UnitTests
-// =============================================
+// set
 
 namespace AspireBlog.Abstractions.Helpers;
 
@@ -15,11 +8,11 @@ public class HelpersTests
 	public void GetSlug_ShouldReturnSlug_WhenValidStringIsProvided()
 	{
 		// Arrange
-		var input = "Hello World";
-		var expected = "hello-world";
+		string? input = "Hello World";
+		string? expected = "hello-world";
 
 		// Act
-		var result = Helpers.GetSlug(input);
+		string? result = input.GetSlug();
 
 		// Assert
 		result.Should().Be(expected);
@@ -32,7 +25,7 @@ public class HelpersTests
 		string? input = null;
 
 		// Act
-		Action act = () => Helpers.GetSlug(input);
+		Action act = () => input.GetSlug();
 
 		// Assert
 		act.Should().Throw<ArgumentException>().WithMessage("Value cannot be null. (Parameter 'item')");
@@ -43,11 +36,11 @@ public class HelpersTests
 	{
 		// Arrange
 		var date = new DateTime(2024, 1, 1);
-		var slug = "hello-world";
+		string? slug = "hello-world";
 		var expected = new Uri("/20240101/hello-world", UriKind.Relative);
 
 		// Act
-		var result = Helpers.ToUrl(date, slug);
+		Uri? result = Helpers.ToUrl(date, slug);
 
 		// Assert
 		result.Should().Be(expected);
