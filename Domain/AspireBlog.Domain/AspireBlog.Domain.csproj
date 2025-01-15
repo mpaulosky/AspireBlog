@@ -7,14 +7,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Constants\" />
-      <Folder Include="Entities\" />
-      <Folder Include="Fakes\" />
-      <Folder Include="Enum\" />
-      <Folder Include="GuardClauses\" />
-      <Folder Include="Helpers\" />
       <Folder Include="Mappers\" />
-      <Folder Include="Models\" />
     </ItemGroup>
 
 </Project>
