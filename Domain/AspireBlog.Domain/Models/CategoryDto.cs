@@ -12,6 +12,10 @@ namespace AspireBlog.Domain.Models;
 public class CategoryDto
 {
 
-	
+	public required string Slug { get; init; }
+
+	public required string CategoryName { get; set; }
+
+	public static CategoryDto Empty => new() { Slug = string.Empty, CategoryName = string.Empty };
 
 }
