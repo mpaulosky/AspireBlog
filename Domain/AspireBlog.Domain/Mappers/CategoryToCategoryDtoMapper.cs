@@ -9,9 +9,21 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public class CategoryToCategoryDtoMapper
+public static class CategoryToCategoryDtoMapper
 {
 
-	
+	public static Category MapToCategory(this CategoryDto categoryDto)
+	{
+
+		return new Category
+		{
+
+				Slug = categoryDto.Slug,
+
+				CategoryName = categoryDto.CategoryName,
+
+		};
+
+	}
 
 }

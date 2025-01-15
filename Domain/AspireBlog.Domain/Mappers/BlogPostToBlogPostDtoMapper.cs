@@ -9,9 +9,28 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public class BlogPostToBlogPostDtoMapper
+public static class BlogPostToBlogPostDtoMapper
 {
 
-	
+	public static BlogPostDto ToBlogPostDto(this BlogPost blogPost)
+	{
+
+		Guard.Against.Null(blogPost, nameof(blogPost));
+
+		return new BlogPostDto
+		{
+				Slug = blogPost.Slug,
+				Title = blogPost.Title,
+				Introduction = blogPost.Introduction,
+				Content = blogPost.Content,
+				CreatedOn = blogPost.CreatedOn,
+				IsPublished = blogPost.IsPublished,
+				PublishedOn = blogPost.PublishedOn,
+				ModifiedOn = blogPost.ModifiedOn,
+				Author = blogPost.Author,
+				Category = blogPost.Category
+		};
+
+	}
 
 }

@@ -9,9 +9,17 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public class UserInfoDtoToUserInfoMapper
+public static class UserInfoDtoToUserInfoMapper
 {
 
-	
+	public static UserInfo MapToUserInfo(this UserInfoDto userInfoDto)
+	{
+
+		return new UserInfo
+		{
+				UserId = userInfoDto.UserId, Name = userInfoDto.Name, Email = userInfoDto.Email, Roles = userInfoDto.Roles
+		};
+
+	}
 
 }
