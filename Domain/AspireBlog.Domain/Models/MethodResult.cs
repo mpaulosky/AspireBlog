@@ -1,6 +1,6 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     MethodResutl.cs
+// File Name :     MethodResult.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,9 +9,21 @@
 
 namespace AspireBlog.Domain.Models;
 
-public class MethodResutl
+public record struct MethodResult(bool Status, string? ErrorMessage = null)
 {
 
-	
+	public static MethodResult Success()
+	{
+
+		return new MethodResult(true);
+
+	}
+
+	public static MethodResult Failure(string errorMessage)
+	{
+
+		return new MethodResult(false, errorMessage);
+
+	}
 
 }
