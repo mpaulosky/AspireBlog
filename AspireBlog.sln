@@ -13,7 +13,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{EA
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{FA798DD1-A3AF-4B4B-8D04-45B60A3B9266}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Persistance", "Persistance\AspireBlog.Persistance\AspireBlog.Persistance.csproj", "{2406EE77-446F-402B-8BEF-DA62C98B6470}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Persistence", "Persistance\AspireBlog.Persistence\AspireBlog.Persistence.csproj", "{2406EE77-446F-402B-8BEF-DA62C98B6470}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Services", "Services\AspireBlog.Services\AspireBlog.Services.csproj", "{05153903-C787-4D41-AB8E-03803FC86986}"
 EndProject

@@ -4,13 +4,20 @@
         <TargetFramework>net8.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <RootNamespace>AspireBlog.Persistence</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Context\" />
-      <Folder Include="Implementation\" />
       <Folder Include="Interfaces\" />
       <Folder Include="SeedingData\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.10" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\Domain\AspireBlog.Domain\AspireBlog.Domain.csproj" />
     </ItemGroup>
 
 </Project>
