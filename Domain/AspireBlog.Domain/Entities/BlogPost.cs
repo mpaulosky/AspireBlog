@@ -9,9 +9,49 @@
 
 namespace AspireBlog.Domain.Entities;
 
+[Serializable, Collection("blog-posts")]
 public class BlogPost
 {
 
-	
+	[Key, Required, MaxLength(300)]
+	public required string Slug { get; set; } = string.Empty;
+
+	[Required, MaxLength(120)] 
+	public required string Title { get; set; } = string.Empty;
+
+	[Required, MaxLength(250)]
+	public required string Introduction { get; set; } = string.Empty;
+
+	[Required, MaxLength(10000)]
+	public required string Content { get; set; } = string.Empty;
+
+		public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.MaxValue;
+
+		public bool IsPublished { get; set; }
+
+		public DateTimeOffset PublishedOn { get; set; } = DateTimeOffset.MaxValue;
+
+		public DateTimeOffset ModifiedOn { get; set; } = DateTimeOffset.MaxValue;
+
+		[MaxLength(100)] public string ImageUrl { get; set; } = string.Empty;
+
+		public CategoryDto Category { get; set; } = CategoryDto.Empty;
+
+		public UserInfoDto Author { get; set; } = UserInfoDto.Empty;
+
+		public static BlogPost Empty =>
+				new BlogPost
+				{
+						Slug = string.Empty,
+						Title = string.Empty,
+						Introduction = string.Empty,
+						Content = string.Empty,
+						CreatedOn = DateTime.MinValue,
+						IsPublished = false,
+						PublishedOn = DateTime.MinValue,
+						ModifiedOn = DateTime.MinValue,
+						Category = CategoryDto.Empty,
+						Author = UserInfoDto.Empty
+				};
 
 }
