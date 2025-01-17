@@ -9,9 +9,40 @@
 
 namespace AspireBlog.Persistence.Implementation;
 
-public class UnitOfWork
+public class UnitOfWork : IUnitOfWork
 {
 
-	
+	private readonly BlogDbContext _context;
+
+	public UnitOfWork(IDbContextFactory<BlogDbContext> context)
+	{
+
+		_context = context.CreateDbContext();
+
+		BlogPost = new BlogPostRepository(_context);
+
+		Category = new CategoryRepository(_context);
+
+	}
+
+	//public IBlogPostRepository BlogPost { get; }
+
+	public IBlogPostRepository BlogPost { get; }
+
+	public ICategoryRepository Category { get; }
+
+	public async Task<int> CompleteAsync()
+	{
+
+		return await _context.SaveChangesAsync();
+
+	}
+
+	public void Dispose()
+	{
+
+		_context.Dispose();
+
+	}
 
 }
