@@ -9,9 +9,28 @@
 
 namespace AspireBlog.Domain.Helpers;
 
-public class Helpers
+public static class Helpers
 {
 
-	
+	public static string GetSlug(this string? item)
+	{
+
+		Guard.Against.NullOrEmpty(item, nameof(item));
+
+		var slug = item.ToLower().Replace(" ", "-");
+
+		// UrlEncode the slug
+		slug = HttpUtility.UrlEncode(slug);
+
+		return slug;
+
+	}
+
+	public static Uri ToUrl(DateTimeOffset date, string slug)
+	{
+
+		return new Uri($"/{date.UtcDateTime:yyyyMMdd}/{slug}", UriKind.Relative);
+
+	}
 
 }

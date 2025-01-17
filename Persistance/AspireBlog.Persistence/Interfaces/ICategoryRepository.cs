@@ -1,17 +1,13 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     MethodResutl.cs
+// File Name :     ICategoryRepository.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
-// Project Name :  AspireBlog.Domain
+// Project Name :  AspireBlog.Persistence
 // ========================================================
 
-namespace AspireBlog.Domain.Models;
+namespace AspireBlog.Persistence.Interfaces;
 
-public class MethodResutl
-{
-
-	
-
-}
+public interface ICategoryRepository : IGenericRepository<Category>
+{ }
