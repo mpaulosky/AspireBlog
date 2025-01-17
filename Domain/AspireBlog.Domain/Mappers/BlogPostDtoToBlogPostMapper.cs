@@ -33,6 +33,18 @@ public static class BlogPostDtoToBlogPostMapper
 
 	}
 
+	/// <summary>
+	///   Maps a list of BlogPostDto to a list of BlogPost.
+	/// </summary>
+	/// <param name="blogPostDtos">The list of BlogPostDto objects to map.</param>
+	/// <returns>A list of BlogPost objects.</returns>
+	public static List<BlogPost> ToBlogPostList(this List<BlogPostDto> blogPostDtos)
+	{
+
+		return blogPostDtos.Select(blogPostDto => blogPostDto.ToBlogPost()).ToList();
+
+	}
+
 	public static BlogPost MergeToBlogPost(this BlogPostDto blogPostDto, BlogPost entity)
 	{
 

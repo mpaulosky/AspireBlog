@@ -33,4 +33,16 @@ public static class BlogPostToBlogPostDtoMapper
 
 	}
 
+	/// <summary>
+	///   Maps a list of BlogPost to a list of BlogPostDto.
+	/// </summary>
+	/// <param name="blogPosts">The list of BlogPosts objects to map.</param>
+	/// <returns>A list of BlogPostDto objects.</returns>
+	public static List<BlogPostDto> ToBlogPostDtoList(this List<BlogPost> blogPosts)
+	{
+
+		return blogPosts.Select(blogPost => blogPost.ToBlogPostDto()).ToList();
+
+	}
+
 }
