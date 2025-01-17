@@ -9,9 +9,95 @@
 
 namespace AspireBlog.Persistence.Implementation;
 
-public class GenericRepository
+public class GenericRepository<T> : IGenericRepository<T> where T : class
 {
 
-	
+	public readonly BlogDbContext Context;
+
+	protected GenericRepository(BlogDbContext context)
+	{
+
+		Context = context;
+
+	}
+
+	public async Task<MethodResult>  AddAsync(T entity)
+	{
+
+		Context.Set<T>().Add(entity);
+
+		return await Task.FromResult(MethodResult.Success());
+
+	}
+
+	public async Task<MethodResult>  AddRangeAsync(IEnumerable<T> entities)
+	{
+
+		Context.Set<T>().AddRange(entities);
+
+		return await Task.FromResult(MethodResult.Success());
+
+	}
+
+	public async Task<bool> AnyAsync(Expression<Func<T, bool>> predicate)
+	{
+
+		return await Context.Set<T>().AnyAsync(predicate);
+
+	}
+
+	public async Task<T?> GetByIdAsync(ObjectId id)
+	{
+
+		return await Context.Set<T>().FindAsync(id);
+
+	}
+
+	public async Task<T?> GetBySlugAsync(string slug)
+	{
+
+		// ReSharper disable once EntityFramework.ClientSideDbFunctionCall
+		return await Context.Set<T>().FirstOrDefaultAsync(x => EF.Property<string>(x, "Slug") == slug);
+
+	}
+
+	public async Task<IEnumerable<T>> GetAllAsync()
+	{
+
+		return await Context.Set<T>().ToListAsync();
+
+	}
+
+	public async Task<IEnumerable<T>> FindAsync(Expression<Func<T, bool>> predicate)
+	{
+
+		return await Context.Set<T>().Where(predicate).ToListAsync();
+
+	}
+
+	public async Task<T?> FindFirstAsync(Expression<Func<T, bool>> predicate)
+	{
+
+		return await Context.Set<T>().FirstOrDefaultAsync(predicate);
+
+	}
+
+	public async Task<MethodResult>  RemoveAsync(T entity)
+	{
+
+		Context.Set<T>().Remove(entity);
+
+		return await Task.FromResult(MethodResult.Success());
+
+	}
+
+	public async Task<MethodResult> UpdateAsync(T entity)
+	{
+
+		Context.Set<T>().Update(entity);
+
+		return await Task.FromResult(MethodResult.Success());
+
+	}
 
 }

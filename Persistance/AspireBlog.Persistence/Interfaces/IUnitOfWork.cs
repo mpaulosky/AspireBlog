@@ -9,9 +9,13 @@
 
 namespace AspireBlog.Persistence.Interfaces;
 
-public class IUnitOfWork
+public interface IUnitOfWork : IDisposable
 {
 
-	
+	IBlogPostRepository BlogPost { get; }
+
+	ICategoryRepository Category { get; }
+
+	Task<int> CompleteAsync();
 
 }

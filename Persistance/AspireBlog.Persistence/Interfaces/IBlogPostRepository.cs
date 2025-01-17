@@ -9,9 +9,11 @@
 
 namespace AspireBlog.Persistence.Interfaces;
 
-public class IBlogPostRepository
+public interface IBlogPostRepository : IGenericRepository<BlogPost>
 {
 
-	
+	Task<IQueryable<BlogPost>> GetPostsAsync(int count = 10, int page = 0);
+
+	Task<IEnumerable<BlogPost>> GetPostsAsync(bool publishedOnly = false, string? categorySlug = null);
 
 }

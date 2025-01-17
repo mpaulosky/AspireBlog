@@ -9,9 +9,10 @@
 
 namespace AspireBlog.Persistence.Implementation;
 
-public class CategoryRepository
+public class CategoryRepository : GenericRepository<Category>, ICategoryRepository
 {
 
-	
+	public CategoryRepository(BlogDbContext context) : base(context)
+	{ }
 
 }

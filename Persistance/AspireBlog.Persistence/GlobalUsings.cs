@@ -7,6 +7,16 @@
 // Project Name :  AspireBlog.Persistence
 // ========================================================
 
+global using System.Linq.Expressions;
+
+global using Ardalis.GuardClauses;
+
 global using AspireBlog.Domain.Entities;
+global using AspireBlog.Domain.Helpers;
+global using AspireBlog.Domain.Models;
+global using AspireBlog.Persistence.Context;
+global using AspireBlog.Persistence.Interfaces;
 
 global using Microsoft.EntityFrameworkCore;
+
+global using MongoDB.Bson;

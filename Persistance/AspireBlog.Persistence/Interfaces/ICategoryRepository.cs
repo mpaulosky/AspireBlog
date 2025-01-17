@@ -9,9 +9,5 @@
 
 namespace AspireBlog.Persistence.Interfaces;
 
-public class ICategoryRepository
-{
-
-	
-
-}
+public interface ICategoryRepository : IGenericRepository<Category>
+{ }
