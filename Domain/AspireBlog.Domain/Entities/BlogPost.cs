@@ -25,13 +25,13 @@ public class BlogPost
 	[Required, MaxLength(10000)]
 	public required string Content { get; set; } = string.Empty;
 
-		public DateTimeOffset CreatedOn { get; set; } = DateTimeOffset.MaxValue;
+		public DateTimeOffset? CreatedOn { get; set; } = DateTimeOffset.MaxValue;
 
 		public bool IsPublished { get; set; }
 
-		public DateTimeOffset PublishedOn { get; set; } = DateTimeOffset.MaxValue;
+		public DateTimeOffset? PublishedOn { get; set; } = DateTimeOffset.MaxValue;
 
-		public DateTimeOffset ModifiedOn { get; set; } = DateTimeOffset.MaxValue;
+		public DateTimeOffset? ModifiedOn { get; set; } = DateTimeOffset.MaxValue;
 
 		[MaxLength(100)] public string ImageUrl { get; set; } = string.Empty;
 
@@ -40,7 +40,7 @@ public class BlogPost
 		public UserInfoDto Author { get; set; } = UserInfoDto.Empty;
 
 		public static BlogPost Empty =>
-				new BlogPost
+				new()
 				{
 						Slug = string.Empty,
 						Title = string.Empty,
