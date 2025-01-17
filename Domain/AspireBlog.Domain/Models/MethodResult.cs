@@ -26,4 +26,10 @@ public record struct MethodResult(bool Status, string? ErrorMessage = null)
 
 	}
 
+	public static MethodResult Failure(string? message, params object?[] args)
+	{
+		var formattedMessage = message is not null ? string.Format(message, args) : null;
+		return new MethodResult(false, formattedMessage);
+	}
+
 }
