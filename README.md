@@ -15,12 +15,9 @@
 ****
 ![GitHub pull requests](https://img.shields.io/github/issues-pr/mpaulosky/AspireBlog?label=pull%20requests&logo=github)
 ![GitHub closed pull requests](https://img.shields.io/github/issues-pr-closed/mpaulosky/AspireBlog?logo=github)
-****
 ![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mpaulosky/AspireBlog/main?label=last%20commit%20main&logo=github)
-![GitHub last commit (branch)](https://img.shields.io/github/last-commit/mpaulosky/AspireBlog/dev?label=last%20commit%20on%20dev&logo=github)
 ****
-![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/mpaulosky/AspireBlog/dotnet.yml?branch=main&label=Build%20%26%20Test%20main&logo=github)
-[![Build and Test dev](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnetdev.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnetdev.yml)
+[![.NET Build](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/dotnet-build.yml)
 [![Deploy GitHub Pages](https://github.com/mpaulosky/AspireBlog/actions/workflows/deploy-jekyll-gh-pages.yml/badge.svg)](https://github.com/mpaulosky/AspireBlog/actions/workflows/deploy-jekyll-gh-pages.yml)
 [![CodeCov Main](https://codecov.io/gh/mpaulosky/AspireBlog/branch/main/graph/badge.svg)](https://codecov.io/gh/mpaulosky/AspireBlog)
 ****
