@@ -14,7 +14,7 @@ public class CategoryDto
 
 	public required string Slug { get; init; }
 
-	public required string CategoryName { get; set; }
+	public required string CategoryName { get; init; }
 
 	public static CategoryDto Empty => new() { Slug = string.Empty, CategoryName = string.Empty };
 

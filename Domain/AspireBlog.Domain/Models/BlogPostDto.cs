@@ -20,13 +20,13 @@ public class BlogPostDto
 
 	public required string Content { get; init; }
 
-	public DateTimeOffset CreatedOn { get; init; }
+	public DateTimeOffset? CreatedOn { get; init; }
 
 	public bool IsPublished { get; init; }
 
-	public DateTimeOffset PublishedOn { get; init; }
+	public DateTimeOffset? PublishedOn { get; init; }
 
-	public DateTimeOffset ModifiedOn { get; init; }
+	public DateTimeOffset? ModifiedOn { get; init; }
 
 	public required CategoryDto Category { get; init; }
 
@@ -39,10 +39,10 @@ public class BlogPostDto
 					Title = string.Empty,
 					Introduction = string.Empty,
 					Content = string.Empty,
-					CreatedOn = DateTime.MinValue,
+					CreatedOn = null,
 					IsPublished = false,
-					PublishedOn = DateTime.MinValue,
-					ModifiedOn = DateTime.MinValue,
+					PublishedOn = null,
+					ModifiedOn = null,
 					Category = CategoryDto.Empty,
 					Author = UserInfoDto.Empty
 			};
