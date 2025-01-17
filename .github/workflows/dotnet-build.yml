@@ -1,0 +1,48 @@
+# This workflow will build a .NET project
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
+
+name: .NET Build
+
+on:
+  push:
+    branches: [ "main" ]
+    paths:
+      - 'AspireBlog.*/**'
+  pull_request:
+    branches: [ "main" ]
+    paths:
+      - 'AspireBlog.*/**'
+
+  workflow_dispatch:
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v4
+      with:
+        global-json-file: global.json
+
+    - name: Workload install
+      run: dotnet workload restore
+
+    - name: Restore dependencies
+      run: dotnet restore
+
+    - name: Build
+      run: dotnet build --no-restore
+
+    - name: Install GitVersion
+      uses: gittools/actions/gitversion/setup@v3.1.1
+      with:
+        versionSpec: "5.x"
+
+    - name: Use GitVersion
+      id: gitversion # step id used as reference for output values
+      uses: gittools/actions/gitversion/execute@v3.1.1
+    - run: |
+        echo "FullSemVer: ${{ steps.gitversion.outputs.fullSemVer }}"

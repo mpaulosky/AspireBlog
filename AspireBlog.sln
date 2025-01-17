@@ -35,9 +35,49 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{DF
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
+		.dockerignore = .dockerignore
+		CODE_METRICS.md = CODE_METRICS.md
+		codecov.yml = codecov.yml
+		docker-compose.yml = docker-compose.yml
+		LICENSE.txt = LICENSE.txt
+		README.md = README.md
+		runsettings.xml = runsettings.xml
+		global.json = global.json
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.UI.Tests.BUnit", "Tests\UnitTests\AspireBlog.UI.Tests.BUnit\AspireBlog.UI.Tests.BUnit.csproj", "{968DDBDF-C3F6-4F1F-AFFA-1B6CF7DFAD0A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "docs", "docs", "{31005D4A-F1EF-42A3-986D-E3864CF9DE5D}"
+	ProjectSection(SolutionItems) = preProject
+		docs\_config.yml = docs\_config.yml
+		docs\CODE_OF_CONDUCT.md = docs\CODE_OF_CONDUCT.md
+		docs\CONTRIBUTING.md = docs\CONTRIBUTING.md
+		docs\README.md = docs\README.md
+		docs\REFERENCES.md = docs\REFERENCES.md
+		docs\SECURITY.md = docs\SECURITY.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{C6AAC208-15D9-475E-A726-0DDFD0E4E791}"
+	ProjectSection(SolutionItems) = preProject
+		.github\dependabot.yml = .github\dependabot.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{153CCD6E-2245-4E2B-A884-6B837FA17D55}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\code-metrics.yml = .github\workflows\code-metrics.yml
+		.github\workflows\codeql-analysis.yml = .github\workflows\codeql-analysis.yml
+		.github\workflows\deploy-jekyll-gh-pages.yml = .github\workflows\deploy-jekyll-gh-pages.yml
+		.github\workflows\formatting.yml = .github\workflows\formatting.yml
+		.github\workflows\todos-to-issues.yml = .github\workflows\todos-to-issues.yml
+		.github\workflows\dotnet-build.yml = .github\workflows\dotnet-build.yml
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{A8169E03-85F8-4A3F-A0ED-BAEE9F5E094B}"
+	ProjectSection(SolutionItems) = preProject
+		.github\ISSUE_TEMPLATE\bug_report.md = .github\ISSUE_TEMPLATE\bug_report.md
+		.github\ISSUE_TEMPLATE\config.yml = .github\ISSUE_TEMPLATE\config.yml
+		.github\ISSUE_TEMPLATE\feature_request.md = .github\ISSUE_TEMPLATE\feature_request.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,5 +132,9 @@ Global
 		{D2B99FF0-654B-4B20-BCA0-79B801D59057} = {8052ECB4-4050-4166-B276-F609EEBD648C}
 		{15BF746C-D37E-4EC3-A8C1-7471272853DB} = {8052ECB4-4050-4166-B276-F609EEBD648C}
 		{968DDBDF-C3F6-4F1F-AFFA-1B6CF7DFAD0A} = {8052ECB4-4050-4166-B276-F609EEBD648C}
+		{31005D4A-F1EF-42A3-986D-E3864CF9DE5D} = {DFF6CC5E-F4DB-4E9D-8C84-67E7EE5E87BF}
+		{C6AAC208-15D9-475E-A726-0DDFD0E4E791} = {DFF6CC5E-F4DB-4E9D-8C84-67E7EE5E87BF}
+		{153CCD6E-2245-4E2B-A884-6B837FA17D55} = {C6AAC208-15D9-475E-A726-0DDFD0E4E791}
+		{A8169E03-85F8-4A3F-A0ED-BAEE9F5E094B} = {C6AAC208-15D9-475E-A726-0DDFD0E4E791}
 	EndGlobalSection
 EndGlobal
