@@ -12,10 +12,8 @@ namespace AspireBlog.Domain.Helpers;
 public static class Helpers
 {
 
-	public static string GetSlug(this string? item)
+	public static string GetSlug(this string item)
 	{
-
-		Guard.Against.NullOrEmpty(item, nameof(item));
 
 		var slug = item.ToLower().Replace(" ", "-");
 
@@ -26,7 +24,7 @@ public static class Helpers
 
 	}
 
-	public static Uri ToUrl(DateTimeOffset date, string slug)
+	public static Uri ToUrl(this string slug, DateTimeOffset date)
 	{
 
 		return new Uri($"/{date.UtcDateTime:yyyyMMdd}/{slug}", UriKind.Relative);

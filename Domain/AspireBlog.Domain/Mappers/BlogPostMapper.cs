@@ -1,6 +1,6 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     BlogPostToBlogPostDtoMapper.cs
+// File Name :     BlogPostMapper.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,13 +9,20 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public static class BlogPostToBlogPostDtoMapper
+/// <summary>
+/// Provides mapping functionality for converting between BlogPost entities
+/// and BlogPostDto models.
+/// </summary>
+public static class BlogPostMapper
 {
 
+	/// <summary>
+	/// Maps a <see cref="BlogPost"/> entity to a <see cref="BlogPostDto"/> model.
+	/// </summary>
+	/// <param name="blogPost">The blog post entity to be mapped.</param>
+	/// <returns>A <see cref="BlogPostDto"/> model containing the mapped data from the input entity.</returns>
 	public static BlogPostDto ToBlogPostDto(this BlogPost blogPost)
 	{
-
-		Guard.Against.Null(blogPost, nameof(blogPost));
 
 		return new BlogPostDto
 		{
@@ -34,10 +41,10 @@ public static class BlogPostToBlogPostDtoMapper
 	}
 
 	/// <summary>
-	///   Maps a list of BlogPost to a list of BlogPostDto.
+	/// Maps a list of <see cref="BlogPost"/> entities to a list of <see cref="BlogPostDto"/> models.
 	/// </summary>
-	/// <param name="blogPosts">The list of BlogPosts objects to map.</param>
-	/// <returns>A list of BlogPostDto objects.</returns>
+	/// <param name="blogPosts">The list of blog post entities to be mapped.</param>
+	/// <returns>A list of <see cref="BlogPostDto"/> models containing the mapped data from the input entities.</returns>
 	public static List<BlogPostDto> ToBlogPostDtoList(this List<BlogPost> blogPosts)
 	{
 

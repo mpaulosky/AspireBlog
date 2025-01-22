@@ -1,6 +1,6 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     CategoryToCategoryDtoMapper.cs
+// File Name :     CategoryMapper.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,9 +9,17 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public static class CategoryToCategoryDtoMapper
+/// <summary>
+/// Provides extension methods for mapping Category entities to CategoryDto objects and vice versa.
+/// </summary>
+public static class CategoryMapper
 {
 
+	/// <summary>
+	/// Maps a Category object to a CategoryDto object.
+	/// </summary>
+	/// <param name="category">The Category object to map.</param>
+	/// <returns>A CategoryDto object.</returns>
 	public static CategoryDto ToCategoryDto(this Category category)
 	{
 

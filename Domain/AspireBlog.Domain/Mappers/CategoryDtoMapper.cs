@@ -1,6 +1,6 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     CategoryDtoToCategoryMapper.cs
+// File Name :     CategoryDtoMapper.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,13 +9,19 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public static class CategoryDtoToCategoryMapper
+/// <summary>
+/// Provides extension methods to map between <see cref="CategoryDto"/> and <see cref="Category"/>.
+/// </summary>
+public static class CategoryDtoMapper
 {
 
+	/// <summary>
+	/// Maps a CategoryDto to a Category.
+	/// </summary>
+	/// <param name="categoryDto">The CategoryDto object to map.</param>
+	/// <returns>A Category object.</returns>
 	public static Category ToCategory(this CategoryDto categoryDto)
 	{
-
-		Guard.Against.Null(categoryDto, nameof(categoryDto));
 
 		return new Category { Slug = categoryDto.Slug, CategoryName = categoryDto.CategoryName, };
 
@@ -33,6 +39,12 @@ public static class CategoryDtoToCategoryMapper
 
 	}
 
+	/// <summary>
+	/// Merges data from a CategoryDto into an existing Category entity.
+	/// </summary>
+	/// <param name="categoryDto">The CategoryDto object containing the updated data.</param>
+	/// <param name="entity">The existing Category entity to be updated.</param>
+	/// <returns>A new Category object with merged data.</returns>
 	public static Category MergeToCategory(this CategoryDto categoryDto, Category entity)
 	{
 

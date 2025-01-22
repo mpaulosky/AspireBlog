@@ -1,6 +1,6 @@
 // =======================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     BlogPostDtoToBlogPostMapper.cs
+// File Name :     BlogPostDtoMapperTests.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,13 +9,19 @@
 
 namespace AspireBlog.Domain.Mappers;
 
-public static class BlogPostDtoToBlogPostMapper
+/// <summary>
+/// Provides mapping functionalities between BlogPostDto and BlogPost entities.
+/// </summary>
+public static class BlogPostDtoMapper
 {
 
+	/// <summary>
+	/// Maps a BlogPostDto object to a BlogPost object.
+	/// </summary>
+	/// <param name="blogPostDto">The BlogPostDto object to map.</param>
+	/// <returns>A BlogPost object with mapped properties from the BlogPostDto.</returns>
 	public static BlogPost ToBlogPost(this BlogPostDto blogPostDto)
 	{
-
-		Guard.Against.Null(blogPostDto, nameof(blogPostDto));
 
 		return new BlogPost
 		{
@@ -45,11 +51,14 @@ public static class BlogPostDtoToBlogPostMapper
 
 	}
 
+	/// <summary>
+	/// Merges the properties of a BlogPostDto object into an existing BlogPost entity.
+	/// </summary>
+	/// <param name="blogPostDto">The BlogPostDto object containing the updated values to merge.</param>
+	/// <param name="entity">The existing BlogPost entity that will be updated with the values from the BlogPostDto.</param>
+	/// <returns>The updated BlogPost entity with values merged from the BlogPostDto.</returns>
 	public static BlogPost MergeToBlogPost(this BlogPostDto blogPostDto, BlogPost entity)
 	{
-
-		Guard.Against.Null(blogPostDto, nameof(blogPostDto));
-		Guard.Against.Null(entity, nameof(entity));
 
 		entity.Slug = blogPostDto.Slug;
 		entity.Title = blogPostDto.Title;
