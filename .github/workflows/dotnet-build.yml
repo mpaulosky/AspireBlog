@@ -5,13 +5,16 @@ name: .NET Build
 
 on:
   push:
-    branches: [ "main" ]
-    paths:
-      - 'AspireBlog.*/**'
+    branches: [ "**" ]
+
   pull_request:
     branches: [ "main" ]
-    paths:
-      - 'AspireBlog.*/**'
+
+    paths-ignore:
+      - "**/*.docs"
+      - "**/*.md"
+      - "**/*.gitignore"
+      - "**/*.gitattributes" 
 
   workflow_dispatch:
 
@@ -36,6 +39,24 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
 
+      - name: Test
+        run: dotnet test --no-restore --no-build --settings runsettings.xml
+
+      - name: Upload dotnet test results
+        uses: actions/upload-artifact@v4
+        with:
+          name: AspireBlog-Test-Results
+          path: TestResults
+
+      - name: Codecov
+        uses: codecov/codecov-action@v5.1.2
+
+      - name: Upload test results to Codecov
+        if: ${{ !cancelled() }}
+        uses: codecov/test-results-action@v1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+      
       - name: Checkout
         uses: actions/checkout@v4
         with:
