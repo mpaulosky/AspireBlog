@@ -45,6 +45,7 @@ public class BlogPost
 						Slug = string.Empty,
 						Title = string.Empty,
 						Introduction = string.Empty,
+						ImageUrl = string.Empty,
 						Content = string.Empty,
 						CreatedOn = DateTime.MinValue,
 						IsPublished = false,
