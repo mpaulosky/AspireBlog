@@ -1,8 +1,17 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     CounterCSharpTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.UI.Tests.BUnit
+// =======================================================
+
 namespace AspireBlog.UI.Tests.BUnit;
 
 /// <summary>
-/// These tests are written entirely in C#.
-/// Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating-basic-tests-in-cs-files
+///   These tests are written entirely in C#.
+///   Learn more at https://bunit.dev/docs/getting-started/writing-tests.html#creating-basic-tests-in-cs-files
 /// </summary>
 public class CounterCSharpTests : TestContext
 {
