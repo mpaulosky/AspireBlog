@@ -7,12 +7,12 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\..\Domain\AspireBlog.Domain\AspireBlog.Domain.csproj" />
-      <ProjectReference Include="..\..\Persistance\AspireBlog.Persistence\AspireBlog.Persistence.csproj" />
+        <ProjectReference Include="..\..\Domain\AspireBlog.Domain\AspireBlog.Domain.csproj"/>
+        <ProjectReference Include="..\..\Persistance\AspireBlog.Persistence\AspireBlog.Persistence.csproj"/>
     </ItemGroup>
 
     <ItemGroup>
-      <PackageReference Include="Blazored.SessionStorage" Version="2.4.0" />
+        <PackageReference Include="Blazored.SessionStorage" Version="2.4.0"/>
     </ItemGroup>
 
 </Project>
