@@ -1,53 +1,70 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     FakeBlogPostDto.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.Fakes;
 
 public static class FakeBlogPostDto
 {
 
-	public static BlogPostDto GetNewBlogPostDto(bool keepId = false, bool useSeed = false)
+	/// <summary>
+	/// Creates a new instance of <see cref="BlogPostDto"/> with fake data.
+	/// </summary>
+	/// <param name="useSeed">Specifies whether to use a seed for deterministic results.</param>
+	/// <returns>A new instance of <see cref="BlogPostDto"/> with populated fake data.</returns>
+	public static BlogPostDto GetNewBlogPostDto(bool useSeed = false)
 	{
-
-		const int count = 1;
-
-		return FakeData(count, keepId, useSeed).First();
-
+	
+		return GenerateFake(useSeed).Generate();
+	
 	}
 
-	public static List<BlogPostDto> GetUserInfoDtos(int numberRequested, bool useSeed = false)
+	/// <summary>
+	/// Generates a list of <see cref="BlogPostDto"/> objects with fake data.
+	/// </summary>
+	/// <param name="numberRequested">The number of <see cref="BlogPostDto"/> objects to generate.</param>
+	/// <param name="useSeed">Specifies whether to use a seed for deterministic results.</param>
+	/// <returns>A list of <see cref="BlogPostDto"/> objects with populated fake data.</returns>
+	public static List<BlogPostDto> GetBlogPostDtos(int numberRequested, bool useSeed = false)
 	{
-
-		return FakeData(numberRequested, true, useSeed);
-
+	
+		return GenerateFake(useSeed).Generate(numberRequested);
+	
 	}
 
-	private static List<BlogPostDto> FakeData(int count, bool keepId = false , bool useSeed = false)
-	{
 
+	/// <summary>
+	/// Generates a configured <see cref="Faker{T}"/> for creating <see cref="BlogPostDto"/> objects with fake data.
+	/// </summary>
+	/// <param name="useSeed">Specifies whether to use a seed for deterministic results.</param>
+	/// <returns>
+	/// A <see cref="Faker{T}"/> instance configured to generate fake <see cref="BlogPostDto"/> objects.
+	/// </returns>
+	internal static Faker<BlogPostDto> GenerateFake(bool useSeed = false)
+	{
+	
 		const int seed = 621;
-
-		var faker = new Faker<BlogPostDto>()
+	
+		var fake = new Faker<BlogPostDto>()
 				.RuleFor(f => f.Title, f => f.Lorem.Sentence())
-				.RuleFor(x => x.Slug, (f, x) => keepId ? string.Empty : x.Title.GetSlug())
-				.RuleFor(f => f.CreatedOn, f => f.Date.Past())
+				.RuleFor(x => x.Slug, (_, x) => x.Title.GetSlug())
+				.RuleFor(f => f.CreatedOn, f => DateOnly.FromDateTime(f.Date.Recent(2)))
 				.RuleFor(f => f.Content, f => f.Lorem.Paragraph())
 				.RuleFor(f => f.IsPublished, f => f.Random.Bool(0.1f))
-				.RuleFor(x => x.PublishedOn, (f, x) => x.IsPublished ? f.Date.Past() : DateTimeOffset.MinValue)
-				.RuleFor(f => f.ModifiedOn, f => f.Date.Recent())
+				.RuleFor(x => x.PublishedOn, (f, x) => x.IsPublished ? DateOnly.FromDateTime(f.Date.Recent(2)) : null)
+				.RuleFor(f => f.ModifiedOn, f => DateOnly.FromDateTime(f.Date.Recent(2)))
 				.RuleFor(f => f.Introduction, f => f.Lorem.Sentence())
-				.RuleFor(f => f.Category, FakeCategoryDto.GetNewCategoryDto(true, true))
+				.RuleFor(f => f.Category, FakeCategoryDto.GetNewCategoryDto(true))
 				.RuleFor(f => f.Author,
-						(f, x) => x.IsPublished ? UserInfoDto.Empty : FakeUserInfoDto.GetNewUserInfoDto(true, true));
-
-		return useSeed ? faker.Generate(count) : faker.UseSeed(seed).Generate(count);
-
+						(_, x) => x.IsPublished ? FakeUserInfoDto.GetNewUserInfoDto(true) : UserInfoDto.Empty);
+	
+		return useSeed ? fake.UseSeed(seed) : fake;
+	
 	}
 
 }

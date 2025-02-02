@@ -1,56 +1,60 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     FakeCategoryDto.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.Fakes;
 
+/// <summary>
+/// Provides fake data generation methods for the <see cref="CategoryDto"/> entity.
+/// </summary>
 public static class FakeCategoryDto
 {
 
-	public static CategoryDto GetNewCategoryDto(bool keepId = false, bool useSeed = false)
+	/// <summary>
+	/// Generates a new fake <see cref="CategoryDto"/> object.
+	/// </summary>
+	/// <param name="useSeed">Indicates whether to apply a fixed seed for deterministic results.</param>
+	/// <returns>A single fake <see cref="CategoryDto"/> object.</returns>
+	public static CategoryDto GetNewCategoryDto(bool useSeed = false)
 	{
 
-		const int count = 1;
-
-		return FakeData(count, keepId, useSeed).First();
+		return GenerateFake(useSeed).Generate();
 
 	}
 
-	public static List<CategoryDto> GetCategoriesDto(int numberRequested, bool keepId = false, bool useSeed = false)
+	/// <summary>
+	/// Generates a list of fake <see cref="CategoryDto"/> objects.
+	/// </summary>
+	/// <param name="numberRequested">The number of <see cref="CategoryDto"/> objects to generate.</param>
+	/// <param name="useSeed">Indicates whether to apply a fixed seed for deterministic results.</param>
+	/// <returns>A list of fake <see cref="CategoryDto"/> objects.</returns>
+	public static List<CategoryDto> GetCategoriesDto(int numberRequested, bool useSeed = false)
 	{
 
-		return FakeData(numberRequested, true, useSeed);
+		return GenerateFake(useSeed).Generate(numberRequested);
 
 	}
 
-	private static List<CategoryDto> FakeData(int count, bool keepId = false , bool useSeed = false)
+	/// <summary>
+	/// Generates a configured <see cref="Faker{CategoryDto}"/> instance to create fake <see cref="CategoryDto"/> objects.
+	/// </summary>
+	/// <param name="useSeed">Indicates whether to apply a fixed seed for deterministic results.</param>
+	/// <returns>A configured <see cref="Faker{CategoryDto}"/> instance.</returns>
+	internal static Faker<CategoryDto> GenerateFake(bool useSeed = false)
 	{
 
 		const int seed = 621;
 
-		var faker = new Faker<CategoryDto>()
-				.RuleFor(x => x.CategoryName, f =>
-				{
-					var category = f.PickRandom<CategoryNames>();
+		var fake = new Faker<CategoryDto>()
+				.RuleFor(x => x.CategoryName, f => f.Commerce.ProductName())
+				.RuleFor(x => x.Slug, (_, x) => x.CategoryName.GetSlug());
 
-					return category switch
-					{
-							CategoryNames.AspNetCore => "ASP.NET Core",
-							CategoryNames.BlazorServer => "Blazor Server",
-							CategoryNames.BlazorWasm => "Blazor WASM",
-							CategoryNames.EntityFrameworkCore => "Entity Framework Core (EF Core)",
-							CategoryNames.NetMaui => ".NET MAUI",
-							_ => "Other"
-					};
-				})
-				.RuleFor(x => x.Slug, (f, x) => keepId ? string.Empty : x.CategoryName.GetSlug());
-
-		return useSeed ? faker.Generate(count) : faker.UseSeed(seed).Generate(count);
+		return useSeed ? fake.UseSeed(seed) : fake;
 
 	}
 
