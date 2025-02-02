@@ -1,24 +1,22 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     BlogDbContext.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Persistence
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Persistence.Context;
 
 public class BlogDbContext : DbContext
 {
 
-	public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options)
-	{
-	}
+	public BlogDbContext(DbContextOptions<BlogDbContext> options) : base(options) { }
 
 	public DbSet<Category> Categories { get; set; }
 
-	public DbSet<BlogPost> BlogPosts { get; set; }
+	public virtual DbSet<BlogPost> BlogPosts { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
