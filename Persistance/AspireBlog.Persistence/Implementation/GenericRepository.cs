@@ -1,11 +1,11 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     GenericRepository.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Persistence
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Persistence.Implementation;
 
@@ -14,7 +14,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 	public readonly BlogDbContext Context;
 
-	protected GenericRepository(BlogDbContext context)
+	internal GenericRepository(BlogDbContext context)
 	{
 
 		Context = context;
@@ -46,25 +46,10 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 	}
 
-	public async Task<T?> GetByIdAsync(ObjectId id)
-	{
-
-		return await Context.Set<T>().FindAsync(id);
-
-	}
-
-	public async Task<T?> GetBySlugAsync(string slug)
-	{
-
-		// ReSharper disable once EntityFramework.ClientSideDbFunctionCall
-		return await Context.Set<T>().FirstOrDefaultAsync(x => EF.Property<string>(x, "Slug") == slug);
-
-	}
-
 	public async Task<IEnumerable<T>> GetAllAsync()
 	{
 
-		return await Context.Set<T>().ToListAsync();
+		return await Context.Set<T>().AsNoTracking().ToListAsync();
 
 	}
 
@@ -82,7 +67,7 @@ public class GenericRepository<T> : IGenericRepository<T> where T : class
 
 	}
 
-	public async Task<MethodResult>  RemoveAsync(T entity)
+	public async Task<MethodResult> RemoveAsync(T entity)
 	{
 
 		Context.Set<T>().Remove(entity);

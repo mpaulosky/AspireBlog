@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     BlogPostToDtoListTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     BlogPostToDtoListTests.cs
@@ -21,31 +30,31 @@ public class BlogPostToDtoListTests
 		// Arrange
 		var blogPosts = new List<BlogPost>
 		{
-				new BlogPost
+				new()
 				{
 						Slug = "test-slug-1",
 						Title = "Test Title 1",
 						Introduction = "Test Introduction 1",
 						Content = "Test Content 1",
-						CreatedOn = DateTimeOffset.UtcNow,
+						CreatedOn = DateOnly.FromDateTime(DateTime.Now),
 						IsPublished = true,
-						PublishedOn = DateTimeOffset.UtcNow,
-						ModifiedOn = DateTimeOffset.UtcNow,
-						Category = FakeCategoryDto.GetNewCategoryDto(true, true),
-						Author = FakeUserInfoDto.GetNewUserInfoDto(true, true)
+						PublishedOn = DateOnly.FromDateTime(DateTime.Now),
+						ModifiedOn = DateOnly.FromDateTime(DateTime.Now),
+						Category = FakeCategoryDto.GetNewCategoryDto(true),
+						Author = FakeUserInfoDto.GetNewUserInfoDto(true)
 				},
-				new BlogPost
+				new()
 				{
 						Slug = "test-slug-2",
 						Title = "Test Title 2",
 						Introduction = "Test Introduction 2",
 						Content = "Test Content 2",
-						CreatedOn = DateTimeOffset.UtcNow,
+						CreatedOn = DateOnly.FromDateTime(DateTime.Now),
 						IsPublished = false,
-						PublishedOn = DateTimeOffset.UtcNow,
-						ModifiedOn = DateTimeOffset.UtcNow,
-						Category = FakeCategoryDto.GetNewCategoryDto(true, true),
-						Author = FakeUserInfoDto.GetNewUserInfoDto(true, true)
+						PublishedOn = DateOnly.FromDateTime(DateTime.Now),
+						ModifiedOn = DateOnly.FromDateTime(DateTime.Now),
+						Category = FakeCategoryDto.GetNewCategoryDto(true),
+						Author = FakeUserInfoDto.GetNewUserInfoDto(true)
 				}
 		};
 

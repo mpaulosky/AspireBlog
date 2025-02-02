@@ -1,29 +1,29 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     CategoryDtoMapper.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.Mappers;
 
 /// <summary>
-/// Provides extension methods to map between <see cref="CategoryDto"/> and <see cref="Category"/>.
+///   Provides extension methods to map between <see cref="CategoryDto" /> and <see cref="Category" />.
 /// </summary>
 public static class CategoryDtoMapper
 {
 
 	/// <summary>
-	/// Maps a CategoryDto to a Category.
+	///   Maps a CategoryDto to a Category.
 	/// </summary>
 	/// <param name="categoryDto">The CategoryDto object to map.</param>
 	/// <returns>A Category object.</returns>
 	public static Category ToCategory(this CategoryDto categoryDto)
 	{
 
-		return new Category { Slug = categoryDto.Slug, CategoryName = categoryDto.CategoryName, };
+		return new Category { Slug = categoryDto.Slug, CategoryName = categoryDto.CategoryName };
 
 	}
 
@@ -40,7 +40,7 @@ public static class CategoryDtoMapper
 	}
 
 	/// <summary>
-	/// Merges data from a CategoryDto into an existing Category entity.
+	///   Merges data from a CategoryDto into an existing Category entity.
 	/// </summary>
 	/// <param name="categoryDto">The CategoryDto object containing the updated data.</param>
 	/// <param name="entity">The existing Category entity to be updated.</param>
@@ -48,7 +48,7 @@ public static class CategoryDtoMapper
 	public static Category MergeToCategory(this CategoryDto categoryDto, Category entity)
 	{
 
-		return new Category() { Slug = categoryDto.Slug, CategoryName = categoryDto.CategoryName, };
+		return new Category { Slug = categoryDto.Slug, CategoryName = categoryDto.CategoryName };
 
 	}
 

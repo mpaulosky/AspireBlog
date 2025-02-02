@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     EnumTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     EnumTests.cs
@@ -42,4 +51,5 @@ public class EnumTests
 	{
 		((int)category).Should().Be(expectedValue);
 	}
+
 }

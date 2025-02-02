@@ -1,11 +1,11 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     BlogPostDto.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.Models;
 
@@ -20,20 +20,20 @@ public class BlogPostDto
 
 	public required string Content { get; init; }
 
-	public DateTimeOffset? CreatedOn { get; init; }
+	public DateOnly? CreatedOn { get; init; }
 
 	public bool IsPublished { get; init; }
 
-	public DateTimeOffset? PublishedOn { get; init; }
+	public DateOnly? PublishedOn { get; init; }
 
-	public DateTimeOffset? ModifiedOn { get; init; }
+	public DateOnly? ModifiedOn { get; init; }
 
 	public required CategoryDto Category { get; init; }
 
 	public required UserInfoDto Author { get; init; }
 
 	public static BlogPostDto Empty =>
-			new BlogPostDto
+			new()
 			{
 					Slug = string.Empty,
 					Title = string.Empty,

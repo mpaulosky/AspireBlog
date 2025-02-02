@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     ObjectIdGuardTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     ObjectIdGuardTests.cs
@@ -13,6 +22,7 @@ namespace AspireBlog.Domain.GuardClauses;
 [TestSubject(typeof(GuardClauseExtensions))]
 public class ObjectIdGuardTests
 {
+
 	[Fact]
 	public void EmptyObjectId_ShouldThrowArgumentException_WhenObjectIdIsEmpty()
 	{
@@ -26,8 +36,8 @@ public class ObjectIdGuardTests
 
 		// Assert
 		act.Should().Throw<ArgumentException>()
-			.WithMessage($"Required input testParameter was empty. (Parameter 'testParameter')")
-			.And.ParamName.Should().Be(parameterName);
+				.WithMessage("Required input testParameter was empty. (Parameter 'testParameter')")
+				.And.ParamName.Should().Be(parameterName);
 	}
 
 	[Fact]
@@ -44,4 +54,5 @@ public class ObjectIdGuardTests
 		// Assert
 		result.Should().Be(nonEmptyObjectId);
 	}
+
 }

@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     BlogPostDtoToBlogPostTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     BlogPostDtoToBlogPostTests.cs
@@ -25,12 +34,12 @@ public class BlogPostDtoToBlogPostTests
 				Title = "Test Title",
 				Introduction = "Test Introduction",
 				Content = "Test Content",
-				CreatedOn = DateTimeOffset.UtcNow,
+				CreatedOn = DateOnly.FromDateTime(DateTime.Now),
 				IsPublished = true,
-				PublishedOn = DateTimeOffset.UtcNow,
-				ModifiedOn = DateTimeOffset.UtcNow,
-				Category = FakeCategoryDto.GetNewCategoryDto(true, true),
-				Author = FakeUserInfoDto.GetNewUserInfoDto(true, true)
+				PublishedOn = DateOnly.FromDateTime(DateTime.Now),
+				ModifiedOn = DateOnly.FromDateTime(DateTime.Now),
+				Category = FakeCategoryDto.GetNewCategoryDto(true),
+				Author = FakeUserInfoDto.GetNewUserInfoDto(true)
 		};
 
 		// Act

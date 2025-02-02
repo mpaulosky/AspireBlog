@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     CategoryDtoToListTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     CategoryDtoToListTests.cs
@@ -19,7 +28,7 @@ public class CategoryDtoToListTests
 	{
 
 		// Arrange
-		var categoryDtos = FakeCategoryDto.GetCategoriesDto(2, true, true);
+		var categoryDtos = FakeCategoryDto.GetCategoriesDto(2, true);
 
 		// Act
 		var result = categoryDtos.ToCategoryList();

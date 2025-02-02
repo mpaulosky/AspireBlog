@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     GlobalUsings.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Services
+// =======================================================
+
 // =======================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     GlobalUsings.cs
@@ -6,6 +15,8 @@
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Services
 // ========================================================
+
+#region
 
 global using System.Linq.Expressions;
 
@@ -21,3 +32,5 @@ global using AspireBlog.Services.Interfaces;
 global using Microsoft.Extensions.Logging;
 
 global using MongoDB.Bson;
+
+#endregion

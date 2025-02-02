@@ -1,22 +1,22 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     BlogPostDtoMapperTests.cs
+// File Name :     BlogPostDtoMapper.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.Mappers;
 
 /// <summary>
-/// Provides mapping functionalities between BlogPostDto and BlogPost entities.
+///   Provides mapping functionalities between BlogPostDto and BlogPost entities.
 /// </summary>
 public static class BlogPostDtoMapper
 {
 
 	/// <summary>
-	/// Maps a BlogPostDto object to a BlogPost object.
+	///   Maps a BlogPostDto object to a BlogPost object.
 	/// </summary>
 	/// <param name="blogPostDto">The BlogPostDto object to map.</param>
 	/// <returns>A BlogPost object with mapped properties from the BlogPostDto.</returns>
@@ -52,7 +52,7 @@ public static class BlogPostDtoMapper
 	}
 
 	/// <summary>
-	/// Merges the properties of a BlogPostDto object into an existing BlogPost entity.
+	///   Merges the properties of a BlogPostDto object into an existing BlogPost entity.
 	/// </summary>
 	/// <param name="blogPostDto">The BlogPostDto object containing the updated values to merge.</param>
 	/// <param name="entity">The existing BlogPost entity that will be updated with the values from the BlogPostDto.</param>
@@ -70,6 +70,7 @@ public static class BlogPostDtoMapper
 		entity.ModifiedOn = blogPostDto.ModifiedOn;
 		entity.Category = blogPostDto.Category;
 		entity.Author = blogPostDto.Author;
+
 		return entity;
 
 	}

@@ -1,17 +1,17 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     CategoryService.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Services
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Services.Services;
 
 /// <summary>
-/// Provides services for managing categories.
-/// Implements <see cref="ICategoryService"/>.
+///   Provides services for managing categories.
+///   Implements <see cref="ICategoryService" />.
 /// </summary>
 public class CategoryService : ICategoryService
 {
@@ -21,10 +21,10 @@ public class CategoryService : ICategoryService
 	private readonly IUnitOfWork _unitOfWork;
 
 	/// <summary>
-	/// Initializes a new instance of the <see cref="CategoryService"/> class.
+	///   Initializes a new instance of the <see cref="CategoryService" /> class.
 	/// </summary>
-	/// <param name="unitOfWork">Instance of <see cref="IUnitOfWork"/> for database operations.</param>
-	/// <param name="logger">Instance of <see cref="ILogger{CategoryService}"/> for logging.</param>
+	/// <param name="unitOfWork">Instance of <see cref="IUnitOfWork" /> for database operations.</param>
+	/// <param name="logger">Instance of <see cref="ILogger{CategoryService}" /> for logging.</param>
 	public CategoryService(IUnitOfWork unitOfWork, ILogger<CategoryService> logger)
 	{
 
@@ -35,14 +35,14 @@ public class CategoryService : ICategoryService
 	}
 
 	/// <summary>
-	/// Adds a new category to the database.
+	///   Adds a new category to the database.
 	/// </summary>
 	/// <param name="entity">The category to add.</param>
 	/// <returns>
-	/// A <see cref="MethodResult"/> indicating the success or failure of the operation.
-	/// Returns failure if the category already exists or if an error occurs while saving.
+	///   A <see cref="MethodResult" /> indicating the success or failure of the operation.
+	///   Returns failure if the category already exists or if an error occurs while saving.
 	/// </returns>
-	public async Task<MethodResult> Add(Category entity)
+	public async Task<MethodResult> AddAsync(Category entity)
 	{
 
 		var exists = await _unitOfWork.Category.AnyAsync(c => c.Slug == entity.Slug);
@@ -52,7 +52,7 @@ public class CategoryService : ICategoryService
 
 			_logger.LogError("This category already exists.");
 
-			return MethodResult.Failure("This category already exists");
+			return MethodResult.Failure("This category already exists.");
 
 		}
 
@@ -65,7 +65,7 @@ public class CategoryService : ICategoryService
 
 			_logger.LogError("Unknown error occurred while saving the category.");
 
-			return MethodResult.Failure("Unknown error occurred while saving the category");
+			return MethodResult.Failure("Unknown error occurred while saving the category.");
 
 		}
 
@@ -76,14 +76,14 @@ public class CategoryService : ICategoryService
 	}
 
 	/// <summary>
-	/// Adds a new list of categories to the database.
+	///   Adds a new list of categories to the database.
 	/// </summary>
 	/// <param name="entities">The categories to add.</param>
 	/// <returns>
-	/// A <see cref="MethodResult"/> indicating the success or failure of the operation.
-	/// Returns failure if a category already exists or if an error occurs while saving.
+	///   A <see cref="MethodResult" /> indicating the success or failure of the operation.
+	///   Returns failure if a category already exists or if an error occurs while saving.
 	/// </returns>
-	public async Task<MethodResult> AddRange(IEnumerable<Category> entities)
+	public async Task<MethodResult> AddRangeAsync(IEnumerable<Category> entities)
 	{
 
 		var categories = entities.ToList();
@@ -97,11 +97,9 @@ public class CategoryService : ICategoryService
 		if (result < expected)
 		{
 
-			_logger.LogError("Unknown error occurred while saving the categories. Saved {result} of {expected}.", result,
-					expected);
+			_logger.LogError("Unknown error occurred while saving the categories.");
 
-			return MethodResult.Failure("Unknown error occurred while saving the categories. Saved {result} of {expected}.",
-					result, expected);
+			return MethodResult.Failure("Unknown error occurred while saving the categories.");
 
 		}
 
@@ -112,12 +110,12 @@ public class CategoryService : ICategoryService
 	}
 
 	/// <summary>
-	/// Retrieves a category by its slug.
+	///   Retrieves a category by its slug.
 	/// </summary>
 	/// <param name="slug">The slug of the category to retrieve.</param>
 	/// <returns>
-	/// The category as a <see cref="CategoryDto"/> if found; otherwise, <c>null</c>.
-	/// Logs an error if the slug is invalid or if the category is not found.
+	///   The category as a <see cref="CategoryDto" /> if found; otherwise, <c>null</c>.
+	///   Logs an error if the slug is invalid or if the category is not found.
 	/// </returns>
 	public async Task<CategoryDto?> GetBySlugAsync(string slug)
 	{
@@ -131,7 +129,7 @@ public class CategoryService : ICategoryService
 
 		}
 
-		var category = await _unitOfWork.Category.GetBySlugAsync(slug);
+		var category = await _unitOfWork.Category.FindFirstAsync(c => c.Slug == slug);
 
 		if (category == null)
 		{
@@ -142,7 +140,7 @@ public class CategoryService : ICategoryService
 
 		}
 
-		_logger.LogInformation("Successfully retrieved category.");
+		_logger.LogInformation("Successfully retrieved the category.");
 
 		var categoryDto = category.ToCategoryDto();
 
@@ -151,7 +149,7 @@ public class CategoryService : ICategoryService
 	}
 
 	/// <summary>
-	/// Retrieves all categories.
+	///   Retrieves all categories.
 	/// </summary>
 	/// <returns>A collection of all categories, or <c>null</c> if none exist.</returns>
 	public async Task<IEnumerable<CategoryDto>?> GetAllAsync()
@@ -159,75 +157,28 @@ public class CategoryService : ICategoryService
 
 		var categories = (await _unitOfWork.Category.GetAllAsync()).ToList();
 
-		_logger.LogInformation("Returned all categories.");
-
-		return categories.ToCategoryDtoList();
-
-	}
-
-	/// <summary>
-	/// Finds categories matching the given predicate.
-	/// </summary>
-	/// <param name="predicate">The predicate to filter categories.</param>
-	/// <returns>
-	/// A collection of matching categoryDtos, or <c>null</c> if no results are found.
-	/// Logs success or failure information.
-	/// </returns>
-	public async Task<IEnumerable<CategoryDto>?> FindAsync(Expression<Func<Category, bool>> predicate)
-	{
-
-		var categories = (await _unitOfWork.Category.FindAsync(predicate)).ToList();
-
 		if (categories.Count == 0)
 		{
 
-			_logger.LogError("Search found no results.");
+			_logger.LogError("No categories exist.");
 
 			return null;
 
 		}
 
-		_logger.LogInformation("Successfully retrieved categories.");
+		_logger.LogInformation("Returned all the categories.");
 
 		return categories.ToCategoryDtoList();
 
 	}
 
 	/// <summary>
-	/// Finds the first category matching the given predicate.
-	/// </summary>
-	/// <param name="predicate">The predicate to filter the category.</param>
-	/// <returns>
-	/// The matching category, or <c>null</c> if not found.
-	/// Logs success or failure information.
-	/// </returns>
-	public async Task<CategoryDto?> FindFirstAsync(Expression<Func<Category, bool>> predicate)
-	{
-
-		var category = await _unitOfWork.Category.FindFirstAsync(predicate);
-
-		if (category == null)
-		{
-
-			_logger.LogError("Category not found.");
-
-			return null;
-
-		}
-
-		_logger.LogInformation("Successfully retrieved category.");
-
-		return category.ToCategoryDto();
-
-	}
-
-	/// <summary>
-	/// Removes a category from the database.
+	///   Removes a category from the database.
 	/// </summary>
 	/// <param name="entity">The category to remove.</param>
 	/// <returns>
-	/// A <see cref="MethodResult"/> indicating the success or failure of the operation.
-	/// Logs whether the removal was successful or failed.
+	///   A <see cref="MethodResult" /> indicating the success or failure of the operation.
+	///   Logs whether the removal was successful or failed.
 	/// </returns>
 	public async Task<MethodResult> RemoveAsync(Category entity)
 	{
@@ -237,9 +188,9 @@ public class CategoryService : ICategoryService
 		if (!exists)
 		{
 
-			_logger.LogError("This category {slug} does not exist.", entity.Slug);
+			_logger.LogError("This category does not exist.");
 
-			return MethodResult.Failure("This category does not exist");
+			return MethodResult.Failure("This category does not exist.");
 
 		}
 
@@ -250,25 +201,25 @@ public class CategoryService : ICategoryService
 		if (result > 0)
 		{
 
-			_logger.LogInformation("Category has been deleted.");
+			_logger.LogInformation("Category has been removed.");
 
 			return MethodResult.Success();
 
 		}
 
-		_logger.LogError("Unknown error occurred while deleting the category.");
+		_logger.LogError("Unknown error occurred while removing the category.");
 
-		return MethodResult.Failure("Unknown error occurred while deleting the category");
+		return MethodResult.Failure("Unknown error occurred while removing the category.");
 
 	}
 
 	/// <summary>
-	/// Updates an existing category in the database.
+	///   Updates an existing category in the database.
 	/// </summary>
 	/// <param name="entity">The updated category entity.</param>
 	/// <returns>
-	/// A <see cref="MethodResult"/> indicating the success or failure of the update operation.
-	/// Logs whether the update operation was successful or failed.
+	///   A <see cref="MethodResult" /> indicating the success or failure of the update operation.
+	///   Logs whether the update operation was successful or failed.
 	/// </returns>
 	public async Task<MethodResult> UpdateAsync(Category entity)
 	{
@@ -278,9 +229,9 @@ public class CategoryService : ICategoryService
 		if (!exists)
 		{
 
-			_logger.LogError("This category {slug} does not exist.", entity.Slug);
+			_logger.LogError("This category does not exist.");
 
-			return MethodResult.Failure("This category {slug} does not exist", entity.Slug);
+			return MethodResult.Failure("This category does not exist.");
 
 		}
 

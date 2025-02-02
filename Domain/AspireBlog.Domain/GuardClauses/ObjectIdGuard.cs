@@ -1,17 +1,19 @@
-// =======================================
+// =======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     ObjectIdGuard.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain
-// ========================================================
+// =======================================================
 
 namespace AspireBlog.Domain.GuardClauses;
 
 public static class GuardClauseExtensions
 {
-	public static ObjectId EmptyObjectId(this IGuardClause guardClause,
+
+	public static ObjectId EmptyObjectId(
+			this IGuardClause guardClause,
 			ObjectId input,
 			string parameterName,
 			string? message = null,

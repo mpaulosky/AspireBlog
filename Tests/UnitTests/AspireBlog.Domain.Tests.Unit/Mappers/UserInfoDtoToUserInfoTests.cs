@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     UserInfoDtoToUserInfoTests.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     UserInfoDtoToUserInfoTests.cs
@@ -19,7 +28,7 @@ public class UserInfoDtoToUserInfoTests
 	{
 
 		//Arrange
-		var userInfoDto = FakeUserInfoDto.GetNewUserInfoDto(true, true);
+		var userInfoDto = FakeUserInfoDto.GetNewUserInfoDto(true);
 
 		//Act
 		var result = userInfoDto.ToUserInfo();

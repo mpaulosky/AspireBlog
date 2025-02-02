@@ -27,7 +27,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "IntegrationTests", "Integra
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Domain.Tests.Unit", "Tests\UnitTests\AspireBlog.Domain.Tests.Unit\AspireBlog.Domain.Tests.Unit.csproj", "{A5D4ECA8-02EA-460E-94B1-2019AADE206E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Persistance.Tests.Unit", "Tests\UnitTests\AspireBlog.Persistance.Tests.Unit\AspireBlog.Persistance.Tests.Unit.csproj", "{D2B99FF0-654B-4B20-BCA0-79B801D59057}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Persistence.Tests.Unit", "Tests\UnitTests\AspireBlog.Persistence.Tests.Unit\AspireBlog.Persistence.Tests.Unit.csproj", "{D2B99FF0-654B-4B20-BCA0-79B801D59057}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AspireBlog.Services.Tests.Unit", "Tests\UnitTests\AspireBlog.Services.Tests.Unit\AspireBlog.Services.Tests.Unit.csproj", "{15BF746C-D37E-4EC3-A8C1-7471272853DB}"
 EndProject
@@ -36,7 +36,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution", "Solution", "{DF
 		.editorconfig = .editorconfig
 		.gitignore = .gitignore
 		.dockerignore = .dockerignore
-		CODE_METRICS.md = CODE_METRICS.md
 		codecov.yml = codecov.yml
 		docker-compose.yml = docker-compose.yml
 		LICENSE.txt = LICENSE.txt
