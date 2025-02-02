@@ -1,3 +1,12 @@
+// =======================================================
+// Copyright (c) 2025. All rights reserved.
+// File Name :     GlobalUsings.cs
+// Company :       mpaulosky
+// Author :        Matthew Paulosky
+// Solution Name : AspireBlog
+// Project Name :  AspireBlog.Domain.Tests.Unit
+// =======================================================
+
 // =======================================
 // Copyright (c) 2025. All rights reserved.
 // File Name :     GlobalUsings.cs
@@ -7,16 +16,15 @@
 // Project Name :  AspireBlog.Domain.Tests.Unit
 // ========================================================
 
+#region
+
 global using System.Diagnostics.CodeAnalysis;
 
 global using Ardalis.GuardClauses;
 
-global using AspireBlog.Domain.Constants;
 global using AspireBlog.Domain.Entities;
 global using AspireBlog.Domain.Enum;
 global using AspireBlog.Domain.Fakes;
-global using AspireBlog.Domain.GuardClauses;
-global using AspireBlog.Domain.Helpers;
 global using AspireBlog.Domain.Models;
 
 global using FluentAssertions;
@@ -29,4 +37,4 @@ global using NSubstitute;
 
 global using Xunit;
 
-global using GuardClauseExtensions = Ardalis.GuardClauses.GuardClauseExtensions;
+#endregion

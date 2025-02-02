@@ -1,6 +1,6 @@
 // =======================================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     HelpersToUrlTests.cs
+// File Name :     BlogPostDtoTests.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
@@ -9,36 +9,38 @@
 
 // ======================================================
 // Copyright (c) 2025. All rights reserved.
-// File Name :     HelpersToUrlTests.cs
+// File Name :     BlogPostDtoTests.cs
 // Company :       mpaulosky
 // Author :        Matthew Paulosky
 // Solution Name : AspireBlog
 // Project Name :  AspireBlog.Domain.Tests.Unit
 // ========================================================
 
-namespace AspireBlog.Domain.Helpers;
+namespace AspireBlog.Domain.ModelsTests;
 
 [ExcludeFromCodeCoverage]
-[TestSubject(typeof(Helpers))]
-public class HelpersToUrlTests
+[TestSubject(typeof(BlogPostDto))]
+public class BlogPostDtoTests
 {
 
 	[Fact]
-	public void ToUrl_ShouldReturnCorrectUri_WhenDateAndSlugAreValid()
+	public void Empty_ShouldReturnEmptyBlogPostDto()
 	{
 
-		// Arrange
-		var date = new DateTimeOffset(2025, 1, 1, 0, 0, 0, TimeSpan.Zero);
-
-		var slug = "test-slug";
-
-		var expectedUri = new Uri("/20250101/test-slug", UriKind.Relative);
-
 		// Act
-		var result = slug.ToUrl(date);
+		var result = BlogPostDto.Empty;
 
 		// Assert
-		result.Should().Be(expectedUri);
+		result.Slug.Should().BeEmpty();
+		result.Title.Should().BeEmpty();
+		result.Introduction.Should().BeEmpty();
+		result.Content.Should().BeEmpty();
+		result.CreatedOn.Should().BeNull();
+		result.IsPublished.Should().BeFalse();
+		result.PublishedOn.Should().BeNull();
+		result.ModifiedOn.Should().BeNull();
+		result.Category.Should().Be(CategoryDto.Empty);
+		result.Author.Should().Be(UserInfoDto.Empty);
 
 	}
 
